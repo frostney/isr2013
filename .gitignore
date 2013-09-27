@@ -56,7 +56,7 @@ builds/**
 # Generated files #
 ###################
 src/generated/**
-css/mygame.css
-js/mygame.js
+css/isr.css
+js/isr.js
 index.html
 *.map

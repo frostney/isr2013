@@ -1,4 +1,4 @@
-define('isr/player', ['jquery', 'isr'], function($, Game) {
+define('isr/player', ['jquery', 'isr', 'isr/config'], function($, Game, Config) {
    console.log('director')
    console.log(Game.director)
    console.log(Game.director.currentScene)
@@ -25,7 +25,7 @@ define('isr/player', ['jquery', 'isr'], function($, Game) {
    $('body').keyup(function(e) {
       console.log('Player movement listener reporting to duty');
       var charPos = $activeCharacter.offset();
-
+console.log(charPos)
       var up = ~~((e.keyCode === 87) || (e.keyCode === 38));
       // W || Arrow up
       var down = ~~((e.keyCode === 83) || (e.keyCode === 40));
@@ -51,9 +51,10 @@ define('isr/player', ['jquery', 'isr'], function($, Game) {
          left : charPos.left,
          top : charPos.top
       };
-
-      // todo movement
-
+      
+      if (!moving && direction) {
+        move(direction);
+      }
    });
    
       /**
@@ -73,7 +74,7 @@ define('isr/player', ['jquery', 'isr'], function($, Game) {
             tileToMove.x -= 1;
             break;
          case 'right':
-            if (playerTilePos.x === (Config.tileWidth - 1)) {
+            if (playerTilePos.x === (Config.tilesLimit.x - 1)) {
                return false;
             }
             tileToMove.x += 1;
@@ -85,7 +86,7 @@ define('isr/player', ['jquery', 'isr'], function($, Game) {
             tileToMove.y -= 1;
             break;
          case 'down':
-            if (playerTilePos.y === (Config.tileHeight - 1)) {
+            if (playerTilePos.y === (Config.tilesLimit.y - 1)) {
                return false;
             }
             tileToMove.y += 1;
@@ -93,7 +94,7 @@ define('isr/player', ['jquery', 'isr'], function($, Game) {
       }
 
       // check if next tile is accessible
-      if ($('#x' + tileToMove.x + '-y' + tileToMove.y).hasClass('notAccessible')) {
+      if ($activeScene.find('#x' + tileToMove.x + '-y' + tileToMove.y).hasClass('notAccessible')) {
          return {};
       }
       return tileToMove;
@@ -106,8 +107,9 @@ define('isr/player', ['jquery', 'isr'], function($, Game) {
       $activeScene.find('#x' + playerTilePos.x + '-y' + playerTilePos.y).find('.item').each(function(index) {
 
          var itemName = $(this).attr('class').split(' ');
-         Inventory.addItem(itemName[itemName.length - 1]);
-         Config.sound.play('happy');
+         //Inventory.addItem(itemName[itemName.length - 1]);
+         //grunt
+         //Config.sound.play('happy');
          $(this).remove();
       });
    };
@@ -121,6 +123,7 @@ define('isr/player', ['jquery', 'isr'], function($, Game) {
          return;
       }
       var targetTiles = checkMove(direction);
+      console.log(targetTiles)
       if (!moving && !$.isEmptyObject(targetTiles)) {
          var movOptions;
          switch (direction) {
@@ -147,13 +150,13 @@ define('isr/player', ['jquery', 'isr'], function($, Game) {
          }
          moving = true;
          playerTilePos = targetTiles;
-/*
+
          $activeCharacter.animate(movOptions, 'slow', function() {
             moving = false;
             if (callBack) {
                callBack();
             }
-         });*/
+         });
       } else {
          return;
       }

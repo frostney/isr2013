@@ -1,5 +1,5 @@
 {
-  "name": "mygame",
+  "name": "isr",
   "version": "0.2.0-beta4",
   "private": true,
   "dependencies": {
@@ -35,8 +35,8 @@
   },
   "lyriaProject": {
     "author": "Johannes Stein",
-    "title": "My Lyria Template",
-    "description": "This is a pretty awesome template, right?",
+    "title": "ISR 2013",
+    "description": "Kill the Achmeds!!!!",
     "lib": {
       "managed": "bower",
       "unmanaged": "./lib"

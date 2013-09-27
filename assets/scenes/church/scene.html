@@ -1,3 +1,7 @@
-<div>{{title}}</div>
+<div id="tile-container">
+{{#each tile}}
+   <div id="{{id}}" class="tile" style="{{style}}"></div>
+{{/each}}
+</div>
 
-<span id="btnSwitch">{{translate "btnSwitchToNextScene"}}</span>
+<div id="character" style="top: 128px;"></div>

@@ -1,5 +1,5 @@
 (function(scene, Lyria) {
-
+/*
   scene.events = {
     '#btnSwitch': {
       'click': function(event) {
@@ -7,9 +7,8 @@
       }
     }
   };
-
+*/
   scene.expose({
-    test: "Hallo",
     title: scene.t('title', {
       name: scene.name
     })

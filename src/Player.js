@@ -8,7 +8,8 @@ define('isr/player', ['jquery', 'isr', 'isr/config'], function($, Game, Config) 
    // current player position
    var playerTilePos = {
       'x' : 0,
-      'y' : 0
+      'y' : 0,
+      'facing' : 'up'
    };
    var startTime = 0;
    // var to indicate if character is currently moving
@@ -26,15 +27,16 @@ define('isr/player', ['jquery', 'isr', 'isr/config'], function($, Game, Config) 
       console.log('Player movement listener reporting to duty');
       var charPos = $activeCharacter.offset();
 console.log(charPos)
-      var up = ~~((e.keyCode === 87) || (e.keyCode === 38));
       // W || Arrow up
-      var down = ~~((e.keyCode === 83) || (e.keyCode === 40));
+      var up = ~~((e.keyCode === 87) || (e.keyCode === 38));
       // S || Arrow down
-      var left = ~~((e.keyCode === 65) || (e.keyCode === 37));
+      var down = ~~((e.keyCode === 83) || (e.keyCode === 40));
       // A || Arrow left
-      var right = ~~((e.keyCode === 68) || (e.keyCode === 39));
+      var left = ~~((e.keyCode === 65) || (e.keyCode === 37));
       // D || Arrow right
-
+      var right = ~~((e.keyCode === 68) || (e.keyCode === 39));
+      // space for interaction
+      var space = ~~(e.keyCode === 32);
       var direction;
 
       if (up) {
@@ -47,14 +49,23 @@ console.log(charPos)
          direction = 'right';
       }
 
-      var newPos = {
+      /*var newPos = {
          left : charPos.left,
          top : charPos.top
-      };
+      };*/
       
+      // move player
       if (!moving && direction) {
         move(direction);
       }
+      
+      if (space) {
+         doAction();
+      }
+      e.stopPropagation();
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return false;
    });
    
       /**
@@ -64,7 +75,8 @@ console.log(charPos)
    var checkMove = function(direction) {
       var tileToMove = {
          'x' : playerTilePos.x,
-         'y' : playerTilePos.y
+         'y' : playerTilePos.y,
+         'facing' : direction
       };
       switch(direction) {
          case 'left':
@@ -101,17 +113,42 @@ console.log(charPos)
    };
    
    /**
-    * Function to check if there is sth on the current tile and pick it up
+    * Function to do stuff like fight or talk
     */
-   var checkAndPickUp = function() {
-      $activeScene.find('#x' + playerTilePos.x + '-y' + playerTilePos.y).find('.item').each(function(index) {
-
-         var itemName = $(this).attr('class').split(' ');
-         //Inventory.addItem(itemName[itemName.length - 1]);
-         //grunt
-         //Config.sound.play('happy');
-         $(this).remove();
+   var doAction = function() {
+      // first check direction
+      var targetTile = {
+         x : playerTilePos.x,
+         y : playerTilePos.y
+      };
+      switch(playerTilePos.facing) {
+         case 'up':
+            targetTile.y += 1;
+         break;
+         case 'down':
+            targetTile.y -= 1;
+         break;
+         case 'left':
+            targetTile.x -= 1;
+         break;
+         case 'right':
+            targetTile.y += 1;
+         break;
+      }
+      // check if on there is sth on the tile the player is facing to interact with
+      var interactableStuff = $activeScene.find('#x' + targetTile.x + '-y' + targetTile.y + ' .interactable');
+      interactableStuff.each(function(index) {
+         if ($(this).hasClass('attackable')) {
+            // TODO do fancy animation
+         } else if ($(this).hasClass('talkable')) {
+            alert('Your are talking to someone');
+         }
       });
+      if (interactableStuff.length === 0) {
+         //TODO add fancy sword swing into empty air
+         alert('You successfully killed empty air');
+      }
+      
    };
    /**
     * Function to move player to the next tile from his position
@@ -152,12 +189,15 @@ console.log(charPos)
          playerTilePos = targetTiles;
 
          $activeCharacter.animate(movOptions, 'slow', function() {
+            // TODO add player rotation in the right direction
             moving = false;
             if (callBack) {
                callBack();
             }
          });
       } else {
+         // TODO add player rotation in the right direction
+         playerTilePos.facing = direction;
          return;
       }
    };

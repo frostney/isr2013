@@ -1,32 +1,26 @@
-define('isr/player', ['jquery', 'isr', 'isr/config'], function($, Game, Config) {
-   console.log('director')
-   console.log(Game.director)
-   console.log(Game.director.currentScene)
+define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, Game, Config, Entity) {
    var $activeScene;
    var $activeCharacter;
    
    // current player position
    var playerTilePos = {
       'x' : 0,
-      'y' : 0,
+      'y' : 2,
       'facing' : 'up'
    };
    var startTime = 0;
    // var to indicate if character is currently moving
    var moving = false;
    
-   Game.director.on('scene:change', function(scene) {
-      console.log('switched scene to ' +scene);
-      $activeScene = $('#' + scene);
-      console.log($activeScene)
+   Game.director.on('scene:change', function(sceneName) {
+      console.log('switched scene to ' +sceneName);
+      $activeScene = $('#' + sceneName);
       $activeCharacter = $activeScene.find('#character');
-      console.log($activeCharacter)
    });
    
    $('body').keyup(function(e) {
       console.log('Player movement listener reporting to duty');
       var charPos = $activeCharacter.offset();
-console.log(charPos)
       // W || Arrow up
       var up = ~~((e.keyCode === 87) || (e.keyCode === 38));
       // S || Arrow down
@@ -67,50 +61,6 @@ console.log(charPos)
       e.stopImmediatePropagation();
       return false;
    });
-   
-      /**
-    * Function to check if movement in desired direction is possible
-    * @param {Object} direction
-    */
-   var checkMove = function(direction) {
-      var tileToMove = {
-         'x' : playerTilePos.x,
-         'y' : playerTilePos.y,
-         'facing' : direction
-      };
-      switch(direction) {
-         case 'left':
-            if (playerTilePos.x === 0) {
-               return false;
-            }
-            tileToMove.x -= 1;
-            break;
-         case 'right':
-            if (playerTilePos.x === (Config.tilesLimit.x - 1)) {
-               return false;
-            }
-            tileToMove.x += 1;
-            break;
-         case 'up':
-            if (playerTilePos.y === 0) {
-               return {};
-            }
-            tileToMove.y -= 1;
-            break;
-         case 'down':
-            if (playerTilePos.y === (Config.tilesLimit.y - 1)) {
-               return false;
-            }
-            tileToMove.y += 1;
-            break;
-      }
-
-      // check if next tile is accessible
-      if ($activeScene.find('#x' + tileToMove.x + '-y' + tileToMove.y).hasClass('notAccessible')) {
-         return {};
-      }
-      return tileToMove;
-   };
    
    /**
     * Function to do stuff like fight or talk
@@ -159,7 +109,7 @@ console.log(charPos)
       if (direction === '') {
          return;
       }
-      var targetTiles = checkMove(direction);
+      var targetTiles = Entity.checkMove(playerTilePos, direction, $activeScene);
       console.log(targetTiles)
       if (!moving && !$.isEmptyObject(targetTiles)) {
          var movOptions;
@@ -200,5 +150,8 @@ console.log(charPos)
          playerTilePos.facing = direction;
          return;
       }
+   };
+   return {
+      'playerTilePos' : playerTilePos
    };
 }); 

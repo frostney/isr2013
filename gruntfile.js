@@ -181,7 +181,7 @@ module.exports = function(grunt) {
       },
       stylus: {
         files: 'stylus/**/*.styl',
-        tasks: ['stylus']
+        tasks: ['stylus:development']
       },
       prepare: {
         files: 'assets/**/*',

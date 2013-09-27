@@ -19,7 +19,7 @@
   // for (var i = 0; i < 9; i++) {
   for (var i = 0; i < screenHeight/tileHeight; i++) {
     for (var j = 0; j < (screenWidth/tileWidth); j++) {
-      var style = 'width: ' + tileWidth + 'px; height: ' + tileHeight + 'px; top: ' + (skyHeight +(tileWidth * i)) + 'px; left: '+ (tileHeight * j) + 'px;position: absolute;background-color:rgb('+((i+j)*10)+','+((i+j)*15)+',100)';
+      var style = 'top: ' + (skyHeight +(tileWidth * i)) + 'px; left: '+ (tileHeight * j) + 'px;background-color:rgb('+((i+j)*10)+','+((i+j)*15)+',100)';
 
       tile.push({
         id: 'x' + i + '-y' + j,

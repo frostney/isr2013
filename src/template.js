@@ -11,6 +11,7 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist'], function(Game, s
 	
 	// If preloader is complete, everything in this function happens
 	myGame.preloader.on('complete', function() {
+	   
     // Add "scene1" to director
     myGame.director.add('church');
     myGame.director.add('temple-1');
@@ -28,5 +29,5 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist'], function(Game, s
   
   // Spin up the preloader
   myGame.preloader.start();
-	
+  return myGame;
 });

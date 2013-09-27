@@ -1,6 +1,30 @@
 define('isr/player', ['jquery', 'isr'], function($, Game) {
+   console.log('director')
+   console.log(Game.director)
+   console.log(Game.director.currentScene)
+   var $activeScene;
+   var $activeCharacter;
+   
+   // current player position
+   var playerTilePos = {
+      'x' : 0,
+      'y' : 0
+   };
+   var startTime = 0;
+   // var to indicate if character is currently moving
+   var moving = false;
+   
+   Game.director.on('scene:change', function(scene) {
+      console.log('switched scene to ' +scene);
+      $activeScene = $('#' + scene);
+      console.log($activeScene)
+      $activeCharacter = $activeScene.find('#character');
+      console.log($activeCharacter)
+   });
+   
    $('body').keyup(function(e) {
-      var charPos = $('#character').offset();
+      console.log('Player movement listener reporting to duty');
+      var charPos = $activeCharacter.offset();
 
       var up = ~~((e.keyCode === 87) || (e.keyCode === 38));
       // W || Arrow up
@@ -79,7 +103,7 @@ define('isr/player', ['jquery', 'isr'], function($, Game) {
     * Function to check if there is sth on the current tile and pick it up
     */
    var checkAndPickUp = function() {
-      $('#x' + playerTilePos.x + '-y' + playerTilePos.y).find('.item').each(function(index) {
+      $activeScene.find('#x' + playerTilePos.x + '-y' + playerTilePos.y).find('.item').each(function(index) {
 
          var itemName = $(this).attr('class').split(' ');
          Inventory.addItem(itemName[itemName.length - 1]);
@@ -123,13 +147,13 @@ define('isr/player', ['jquery', 'isr'], function($, Game) {
          }
          moving = true;
          playerTilePos = targetTiles;
-
-         $('#character').animate(movOptions, 'slow', function() {
+/*
+         $activeCharacter.animate(movOptions, 'slow', function() {
             moving = false;
             if (callBack) {
                callBack();
             }
-         });
+         });*/
       } else {
          return;
       }

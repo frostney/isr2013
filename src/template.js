@@ -1,4 +1,4 @@
-define('mygame', ['lyria/game', 'mygame/scenelist', 'mygame/assetlist'], function(Game, sceneList, assetList) {
+define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist'], function(Game, sceneList, assetList) {
   'use strict';
   
   // Create a new game object

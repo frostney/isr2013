@@ -1,5 +1,5 @@
-define('isr/entity', ['jquery', 'isr', 'isr/config'], function($, Game, Config) {
-         /**
+define('isr/entity', ['jquery', 'isr', 'isr/config', 'lyria/loop'], function($, Game, Config, Loop) {
+   /**
     * Function to check if movement in desired direction is possible
     * @param {Object} direction
     */
@@ -38,13 +38,13 @@ define('isr/entity', ['jquery', 'isr', 'isr/config'], function($, Game, Config) 
       // check if next tile is accessible
       var sceneTile = $scene.find('#x' + tileToMove.x + '-y' + tileToMove.y);
       // check if there is an obstacle, npc or enemy
-      if (sceneTile.hasClass('obstacle') || sceneTile.hasClass('npc') || $scene.find('.attackable[data-x="'+tileToMove.x+'"][data-y="'+tileToMove.y+'"]').length > 0) {
+      if (sceneTile.hasClass('obstacle') || sceneTile.hasClass('npc') || $scene.find('.attackable[data-x="' + tileToMove.x + '"][data-y="' + tileToMove.y + '"]').length > 0) {
          return {};
       }
       return tileToMove;
    };
-   
-/**
+
+   /**
     * Function to move player to the next tile from his position
     * @param {Object} options
     * @param {Object} options.elemMovState
@@ -91,15 +91,22 @@ define('isr/entity', ['jquery', 'isr', 'isr/config'], function($, Game, Config) 
          $.extend(true, options.elemMovState, targetTiles);
          options.$element.removeClass('left right up down').addClass(options.direction);
          options.$element.animate(movOptions, 'slow', function() {
-            // TODO add player rotation in the right direction
             options.elemMovState.moving = false;
             if (options.callback) {
                options.callback();
             }
          });
+         var spriteCounter = 0;
+         Loop.on('walkAnimation', function(delta) {
+            if (spriteCounter === 17) {
+               options.$element.removeClass('walk' + (spriteCounter));
+               Loop.off('walkAnimation');
+            }
+            options.$element.removeClass('walk' + (spriteCounter++)).addClass('walk' + spriteCounter);
+
+         });
          return true;
       } else {
-         // TODO add player rotation in the right direction
          options.$element.removeClass('left right up down').addClass(options.direction);
          options.elemMovState.facing = options.direction;
          return false;
@@ -108,4 +115,4 @@ define('isr/entity', ['jquery', 'isr', 'isr/config'], function($, Game, Config) 
    return {
       'move' : move
    };
-});
+}); 

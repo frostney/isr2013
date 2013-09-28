@@ -1,9 +1,14 @@
 define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, Game, Config, Entity) {
-   console.log('Entity')
-   console.log(Entity)
    var $activeScene;
    var $activeCharacter;
-   
+   var scenePlayer = {
+      'church' : {'x': 8, 'y' : 9},
+      'family' : {'x': 8, 'y' : 9},
+      'temple-1' : {'x': 8, 'y' : 9},
+      'temple-2' : {'x': 8, 'y' : 9},
+      'war-1' : {'x': 0, 'y' : 3},
+      'war-2' : {'x': 0, 'y' : 3}
+   };
    // current player position
    var playerMovState = {
       'x' : 0,
@@ -17,9 +22,22 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
    
    
    Game.director.on('scene:change', function(sceneName) {
+      // save current player pos to scenePlayer
+      if ($activeScene) {
+         scenePlayer[$activeScene[0].id].x = playerMovState.x;
+         scenePlayer[$activeScene[0].id].y = playerMovState.y;
+      }
       console.log('switched scene to ' +sceneName);
       $activeScene = $('#' + sceneName);
-      $activeCharacter = $activeScene.find('#character');
+      
+      $activeCharacter = $activeScene.find('.character');
+      // get last player pos of player of this scene
+      playerMovState.x = scenePlayer[sceneName].x;
+      playerMovState.y = scenePlayer[sceneName].y;
+      $activeCharacter.offset({
+         'left' : playerMovState.x * Config.tiles.width,
+         'top' : playerMovState.y * Config.tiles.height
+      });
    });
    
    $('body').keyup(function(e) {
@@ -58,7 +76,12 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
            'elemMovState' : playerMovState,
            '$scene' : $activeScene,
            '$element' : $activeCharacter,
-           'direction' : direction
+           'direction' : direction,
+           'callback' : function() {
+              // trigger global playerMoved and scene specific playerMoved events
+              Game.director.currentScene.trigger('playerMoved', playerMovState);
+              Game.director.trigger('playerMoved', playerMovState);
+           }
         });
       }
       

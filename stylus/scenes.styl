@@ -1,4 +1,4 @@
-#viewport
+#viewport {
   position: absolute
   left: 50%
   width: 960px
@@ -7,11 +7,25 @@
   margin-left: -(960px / 2)
   
   overflow: hidden
-  background-image: linear-gradient(top, #ccc, #bbb)
+  background-image: linear-gradient(top, #ccc, #bbb)  
+}
 
-.scene
+.scene {
   position: absolute
   width: 100%
   height: 100%
   
-  background-color: #fff
+  background-repeat: no-repeat
+}
+
+#war-1, #war-2 {
+  background-image: url("../assets/images/desert.png")
+}
+
+#war-2 {
+  background-position: -960px 0px
+}
+
+#church {
+  background-image: url("../assets/images/grass.png")
+}

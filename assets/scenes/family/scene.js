@@ -1,4 +1,14 @@
 (function(scene) {
+  // add event listener for changing scenes based on player position
+   scene.on('playerMoved', function(playerMovState, sceneName) {
+      if (sceneName !== scene.name) {
+         return;
+      }
+      console.log('temple-2 checking if we need to change the scene, current '+scene.parent.currentScene.name);
+      if (playerMovState.level === 3) {
+         scene.parent.show('church');
+      }
+   });
    
   var Config = scene.modules.ISR.Config;
   // console.log(Config);

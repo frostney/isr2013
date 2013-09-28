@@ -48,8 +48,8 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       var left = ~~((e.keyCode === 65) || (e.keyCode === 37));
       // D || Arrow right
       var right = ~~((e.keyCode === 68) || (e.keyCode === 39));
-      // space for interaction
-      var space = ~~(e.keyCode === 32);
+      // F for interaction
+      var action = ~~(e.keyCode === 70);
       var direction;
 
       if (up) {
@@ -82,7 +82,7 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
         });
       }
       
-      if (space) {
+      if (action) {
          doAction();
       }
       e.stopPropagation();

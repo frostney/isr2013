@@ -30,7 +30,6 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       console.log('switched scene to ' +sceneName);
       $activeScene = $('#' + sceneName);
       $activeCharacter = $activeScene.find('.character');
-      console.log($activeCharacter)
       // get last player pos of player of this scene
       playerMovState.x = scenePlayer[sceneName].x;
       playerMovState.y = scenePlayer[sceneName].y;
@@ -41,7 +40,6 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
    });
    
    $('body').keyup(function(e) {
-      console.log('Player movement listener reporting to duty');
       var charPos = $activeCharacter.offset();
       // W || Arrow up
       var up = ~~((e.keyCode === 87) || (e.keyCode === 38));

@@ -29,10 +29,7 @@
       for (var y = 0; y < tileLimitY; y++) {
       var kind ='';
       var style = 'top: ' + (churchHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;';
-      
-         console.log('before loop');
       if ((x < 5 || x> 7) && ((y*x)%12 == 3)) {
-         console.log('here in loop');
          kind = 'obstacle grave';
       } else if (x > 4 && x< 8){
          kind = 'road';

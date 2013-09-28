@@ -88,13 +88,10 @@ define('isr/entity', ['jquery', 'isr', 'isr/config'], function($, Game, Config) 
          }
          options.elemMovState.moving = true;
          $.extend(true, options.elemMovState, targetTiles);
-
          options.$element.animate(movOptions, 'slow', function() {
             // TODO add player rotation in the right direction
             options.elemMovState.moving = false;
-            console.log('end of movement')
             if (options.callback) {
-            console.log('end of movement, trigger callback')
                options.callback();
             }
          });

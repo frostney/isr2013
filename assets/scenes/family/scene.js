@@ -23,7 +23,7 @@
   // for (var x = 0; x < 12; x++) {
     for (var x= 0; x < (tileLimitX); x++) {
       for (var y = 0; y < tileLimitY; y++) {
-      var style = 'top: ' + (skyHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;background-color:rgb('+((x+y)*10)+','+((x+y)*15)+',100)';
+      var style = 'top: ' + (skyHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;';
       
       tile.push({
         id: 'x' + x + '-y' + y,

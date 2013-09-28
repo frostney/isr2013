@@ -24,7 +24,7 @@
     for (var x= 0; x < (tileLimitX); x++) {
       for (var y = 0; y < tileLimitY; y++) {
       var kind ='';
-      var style = 'top: ' + (skyHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;background-color:rgb('+((x+y)*10)+','+((x+y)*15)+',100)';
+      var style = 'top: ' + (skyHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;';
       if (['5-5', '3-8', '2-4'].indexOf(x+'-'+y) !== -1) {
          kind = 'npc knight left';
          // TODO add some random left or right

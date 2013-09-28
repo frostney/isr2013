@@ -1,16 +1,19 @@
 define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, Game, Config, Entity) {
+   console.log('Entity')
+   console.log(Entity)
    var $activeScene;
    var $activeCharacter;
    
    // current player position
-   var playerTilePos = {
+   var playerMovState = {
       'x' : 0,
       'y' : 2,
-      'facing' : 'up'
+      'facing' : 'up',
+      // var to indicate if character is currently moving
+      'moving' : false
    };
    var startTime = 0;
-   // var to indicate if character is currently moving
-   var moving = false;
+   
    
    Game.director.on('scene:change', function(sceneName) {
       console.log('switched scene to ' +sceneName);
@@ -49,8 +52,13 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       };*/
       
       // move player
-      if (!moving && direction) {
-        move(direction);
+      if (!playerMovState.moving && direction) {
+        Entity.move({
+           'elemMovState' : playerMovState,
+           '$scene' : $activeScene,
+           '$element' : $activeCharacter,
+           'direction' : direction
+        });
       }
       
       if (space) {
@@ -68,10 +76,10 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
    var doAction = function() {
       // first check direction
       var targetTile = {
-         x : playerTilePos.x,
-         y : playerTilePos.y
+         x : playerMovState.x,
+         y : playerMovState.y
       };
-      switch(playerTilePos.facing) {
+      switch(playerMovState.facing) {
          case 'up':
             targetTile.y += 1;
          break;
@@ -100,58 +108,8 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       }
       
    };
-   /**
-    * Function to move player to the next tile from his position
-    * @param {Object} direction
-    * @param {Object} callBack
-    */
-   var move = function(direction, callBack) {
-      if (direction === '') {
-         return;
-      }
-      var targetTiles = Entity.checkMove(playerTilePos, direction, $activeScene);
-      console.log(targetTiles)
-      if (!moving && !$.isEmptyObject(targetTiles)) {
-         var movOptions;
-         switch (direction) {
-            case 'up':
-               movOptions = {
-                  'top' : '-=' + Config.tile.width
-               };
-               break;
-            case 'down':
-               movOptions = {
-                  'top' : '+=' + Config.tile.width
-               };
-               break;
-            case 'left':
-               movOptions = {
-                  'left' : '-=' + Config.tile.width
-               };
-               break;
-            case 'right':
-               movOptions = {
-                  'left' : '+=' + Config.tile.width
-               };
-               break;
-         }
-         moving = true;
-         playerTilePos = targetTiles;
-
-         $activeCharacter.animate(movOptions, 'slow', function() {
-            // TODO add player rotation in the right direction
-            moving = false;
-            if (callBack) {
-               callBack();
-            }
-         });
-      } else {
-         // TODO add player rotation in the right direction
-         playerTilePos.facing = direction;
-         return;
-      }
-   };
+   
    return {
-      'playerTilePos' : playerTilePos
+      'playerMovState' : playerMovState
    };
 }); 

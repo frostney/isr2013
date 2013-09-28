@@ -14,11 +14,26 @@
   // for (var x = 0; x < 12; x++) {
     for (var x= 0; x < (tileLimitX); x++) {
       for (var y = 0; y < tileLimitY; y++) {
+      var kind ='';
       var style = 'top: ' + (skyHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;background-color:rgb('+((x+y)*10)+','+((x+y)*15)+',100)';
-      
+      // set master templar
+      if (x === 5 && y === 2) {
+         kind = 'npc knight old';
+      } // set idle templars
+      else if (['5-5', '3-8', '2-4'].indexOf(x+'-'+y) !== -1) {
+         kind = 'npc knight left';
+         // TODO add some random left or right
+      } else if (x === 7 && y === 3) {
+         kind = 'npc brother';
+      } else if (x === 8 && y === 3) {
+         kind = 'npc wife';
+      } else if (x === 9 && y === 3) {
+         kind = 'npc child';
+      }
       tile.push({
         id: 'x' + x + '-y' + y,
-        style: style
+        style: style,
+        kind: kind
       });
     }
   }

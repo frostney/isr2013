@@ -12,6 +12,7 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       // var to indicate if character is currently moving
       'moving' : false
    };
+   var lives = 3;
    var startTime = 0;
    
    
@@ -106,10 +107,18 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
          //TODO add fancy sword swing into empty air
          alert('You successfully killed empty air');
       }
-      
+   };
+   
+   var decreaseLives = function() {
+      lives--;
+      if (lives === 0) {
+         alert('Game over');
+         location.reload();
+      }
    };
    
    return {
-      'playerMovState' : playerMovState
+      'playerMovState' : playerMovState,
+      'decreaseLives' : decreaseLives
    };
 }); 

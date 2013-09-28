@@ -157,6 +157,12 @@
             <filename>ruin1.png</filename>
             <filename>sign.png</filename>
             <filename>grave2.png</filename>
+            <filename>tree.png</filename>
+            <filename>gravehill.png</filename>
+            <filename>bed.png</filename>
+            <filename>chair.png</filename>
+            <filename>dummy.png</filename>
+            <filename>table.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

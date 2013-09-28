@@ -76,8 +76,8 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
            'direction' : direction,
            'callback' : function() {
               // trigger global playerMoved and scene specific playerMoved events
-              Game.director.currentScene.trigger('playerMoved', playerMovState);
-              Game.director.trigger('playerMoved', playerMovState);
+              Game.director.currentScene.trigger('playerMoved', playerMovState, $activeScene[0].id);
+              //Game.director.trigger('playerMoved', playerMovState);
            }
         });
       }

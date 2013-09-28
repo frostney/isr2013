@@ -1,19 +1,21 @@
 (function(scene, Lyria) {
 
    // add event listener for changing scenes based on player position
-   scene.on('playerMoved', function(playerMovState) {
-      console.log('church checking if we need to change the scene');
-      if (playerMovState.y <= 7) {
+   scene.on('playerMoved', function(playerMovState, sceneName) {
+      if (sceneName !== scene.name) {
+         return;
+      }
+      console.log('church checking if we need to change the scene, current '+scene.parent.currentScene.name);
+      if (playerMovState.y === 7) {
          scene.parent.show('temple-1');
-      } else if (playerMovState.y <= 5) {
+      } else if (playerMovState.y === 5) {
          scene.parent.show('war-1');
-      } else if (playerMovState.y <= 3) {
+      } else if (playerMovState.y === 3) {
          scene.parent.show('family');
-      } else if (playerMovState.y <= 1) {
+      } else if (playerMovState.y === 1) {
          alert('You´ve got your pennance');
       }
    });
-  console.log(scene.modules);
   var Config = scene.modules.ISR.Config;
   console.log(Config);
   var tile = [];

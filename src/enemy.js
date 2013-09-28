@@ -6,9 +6,9 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
    var $currentScene;
    var $currentEnemies;
    Game.director.on('scene:change', function(sceneName) {
-      console.log('enemy scene change to '+ sceneName);
       // only start enemy movement if scene is active
-      if (sceneName === 'war-1' || sceneName === 'war-2' || sceneName === 'church') {
+      if (sceneName === 'war-1' || sceneName === 'war-2') {
+         console.log('enemy scene change to '+ sceneName);
          $activeScene = $('#' + sceneName);
          $currentEnemies = $activeScene.find('.enemy');
          Game.director.currentScene.on('startKIMovement', kiMovement);

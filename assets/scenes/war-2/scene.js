@@ -1,6 +1,14 @@
 (function(scene) {
-   
-  console.log(scene.modules);
+   scene.on('playerMoved', function(playerMovState, sceneName) {
+      if (sceneName !== scene.name) {
+         return;
+      }
+      console.log('war-2 checking if we need to change the scene, current '+scene.parent.currentScene.name);
+      if (playerMovState.x === 0 && false) {
+         // TODO add check if player has found the holy table cloth
+         scene.parent.show('war-1');
+      }
+   });
   var Config = scene.modules.ISR.Config;
   // console.log(Config);
   var tile = [];

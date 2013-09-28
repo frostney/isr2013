@@ -1,6 +1,15 @@
 (function(scene) {
    
-  console.log(scene.modules);
+   // add event listener for changing scenes based on player position
+   scene.on('playerMoved', function(playerMovState, sceneName) {
+      if (sceneName !== scene.name) {
+         return;
+      }
+      console.log('temple-1 checking if we need to change the scene, current '+scene.parent.currentScene.name);
+      if (playerMovState.y <= 0) {
+         scene.parent.show('temple-2');
+      }
+   });
   var Config = scene.modules.ISR.Config;
   // console.log(Config);
   var tile = [];

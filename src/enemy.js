@@ -1,4 +1,4 @@
-define('isr/enemy', ['jquery', 'isr', 'isr/player', 'usr/entity'], function($, Game, Player, Entity) {
+define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity'], function($, Game, Player, Entity) {
    var enemyTiles = {
       'war-1' : [],
       'war-2' : []

@@ -32,9 +32,9 @@
       var kind ='';
       var style = 'top: ' + (churchHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;';
       if ((x < 5 || x> 7) && ((y*x)%12 == 3)) {
-         kind = 'obstacle grave';
-      } else if (x > 4 && x< 8){
-         kind = 'road';
+         kind = 'obstacle items grave1';
+      } else if (x > 4 && x < 8 && y > 3){
+         kind = 'items road';
       } else {
          kind = 'obstacle';
       }

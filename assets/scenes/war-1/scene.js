@@ -31,20 +31,23 @@
       var kind ='';
       var style = 'top: ' + (tileWidth * y) + 'px; left: '+ (tileHeight * x) + 'px;';
       
-      if (['8-5', '3-4', '9-4'].indexOf(x+'-'+y) !== -1) {
+      if (['3-2', '3-6'].indexOf(x+'-'+y) !== -1) {
          // var tempIndex = y*x%2;
          // kind = kindArr[tempIndex];
-         kind = 'obstacle ruin1';
+         kind = 'obstacle items ruin1';
          
-      } else if (['5-5', '3-8', '2-5'].indexOf(x+'-'+y) !== -1) {
+      } else if (['9-2', '9-6'].indexOf(x+'-'+y) !== -1) {
          // kind = kindArr[tempIndex];
-         kind = 'obstacle ruin2';
+         kind = 'obstacle items ruin2';
          
-      } else if (['5-6', '3-1', '6-4'].indexOf(x+'-'+y) !== -1) {
+      } else if (['4-1', '4-5', '8-1', '8-5'].indexOf(x+'-'+y) !== -1) {
          // kind = kindArr[tempIndex];
-         kind = 'obstacle ruin3';
+         kind = 'obstacle items ruin3';
+      } else if (['1-2'].indexOf(x+'-'+y) !== -1) {
+         // kind = kindArr[tempIndex];
+         kind = 'obstacle items sign';
          
-      } else if (['6-6', '7-8', '3-5'].indexOf(x+'-'+y) !== -1) {
+      } else if (['10-3', '10-4', '10-5'].indexOf(x+'-'+y) !== -1) {
          // add enemies
          enemy.push({
            'data-x': x,

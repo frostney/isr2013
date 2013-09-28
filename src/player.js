@@ -103,25 +103,33 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       };
       switch(playerMovState.facing) {
          case 'up':
-            targetTile.y += 1;
+            targetTile.y -= 1;
          break;
          case 'down':
-            targetTile.y -= 1;
+            targetTile.y += 1;
          break;
          case 'left':
             targetTile.x -= 1;
          break;
          case 'right':
-            targetTile.y += 1;
+            targetTile.x += 1;
          break;
       }
       // check if on there is sth on the tile the player is facing to interact with
-      var interactableStuff = $activeScene.find('#x' + targetTile.x + '-y' + targetTile.y + ' .interactable');
+      var interactableStuff = $activeScene.find('#x' + targetTile.x + '-y' + targetTile.y + '.interactable');
       interactableStuff.each(function(index) {
          if ($(this).hasClass('attackable')) {
             // TODO do fancy animation
          } else if ($(this).hasClass('talkable')) {
-            alert('Your are talking to someone');
+            console.log('Your are talking to someone');
+            //TODO open dialog or sth similar
+            if ($(this).hasClass('knight old')) {
+               playerMovState.level = 1;
+            } else if ($(this).hasClass('socket tablecloth')) {
+               playerMovState.level = 2;
+            } else if ($(this).hasClass('wife')) {
+               playerMovState.level = 3;
+            }
          }
       });
       if (interactableStuff.length === 0) {

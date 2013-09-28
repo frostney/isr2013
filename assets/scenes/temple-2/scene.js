@@ -27,7 +27,7 @@
       var style = 'top: ' + (skyHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;background-color:rgb('+((x+y)*10)+','+((x+y)*15)+',100)';
       // set master templar
       if (x === 5 && y === 2) {
-         kind = 'npc knight old';
+         kind = 'npc knight old interactable talkable';
       } // set idle templars
         else if (['2-2','3-1', '4-1'].indexOf(x+'-'+y) !== -1) {
          kind = 'npc knight right';

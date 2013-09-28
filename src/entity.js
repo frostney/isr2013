@@ -101,8 +101,9 @@ define('isr/entity', ['jquery', 'isr', 'isr/config', 'lyria/loop'], function($, 
             if (spriteCounter === 17) {
                options.$element.removeClass('walk' + (spriteCounter));
                Loop.off('walkAnimation');
+            } else {
+               options.$element.removeClass('walk' + (spriteCounter++)).addClass('walk' + spriteCounter);
             }
-            options.$element.removeClass('walk' + (spriteCounter++)).addClass('walk' + spriteCounter);
 
          });
          return true;

@@ -3,13 +3,13 @@
    // add event listener for changing scenes based on player position
    scene.on('playerMoved', function(playerMovState) {
       console.log('church checking if we need to change the scene');
-      if (playerMovState.y <= 8) {
+      if (playerMovState.y <= 7) {
          scene.parent.show('temple-1');
-      } else if (playerMovState.y <= 6) {
+      } else if (playerMovState.y <= 5) {
          scene.parent.show('war-1');
-      } else if (playerMovState.y <= 4) {
+      } else if (playerMovState.y <= 3) {
          scene.parent.show('family');
-      } else if (playerMovState.y <= 2) {
+      } else if (playerMovState.y <= 1) {
          alert('You´ve got your pennance');
       }
    });

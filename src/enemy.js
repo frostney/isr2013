@@ -59,11 +59,11 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
                'direction' : direction,
                'callback' : function() {
                   // set new KI coordinates after movement finished
-                  $enemy.attr('data-x', pos.x).attr('data-y', pos.y).attr('data-movement', '0');
+                  $enemy.attr('data-movement', '0');
                }
             })) {
                // if there was a movement triggered set movement state
-               $enemy.attr('data-movement', '1');
+               $enemy.attr('data-x', pos.x).attr('data-y', pos.y).attr('data-movement', '1');
             }
          }
       });

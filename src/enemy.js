@@ -15,7 +15,7 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
          Game.director.currentScene.trigger({
             name : 'startKIMovement',
             repeat : true,
-            interval : 3000
+            interval : 2500
          });
       } else {
          Game.director.currentScene.off('startKIMovement');
@@ -36,10 +36,15 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
          }
          var direction;
          // check if player is in range and move to him
-         if (checkIfPlayerInRange(pos, 3)) {
-            alert('Moving to player');
-            direction = 'up';
+         if ((direction = checkIfPlayerInRange(pos, 3))) {
+            console.log('Moving to player');
+            // direction = 'up';
             // TODO attack player
+            if (direction === 'attack') {
+               alert('ATTACK');
+               direction = undefined;
+               Player.decreaseLives();
+            }
          } else {
             if (LyriaMath.random(0, 100) > 50) {
                direction = getRandomDirection();
@@ -81,10 +86,23 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
     * Check if player is in range of pos coordinates
     */
    var checkIfPlayerInRange = function(pos, range) {
-
-      if (Math.abs(Player.playerMovState.x - pos.x) < range && Math.abs(Player.playerMovState.y - pos.y) < range) {
+      var diff_x = Math.abs(Player.playerMovState.x - pos.x);
+      var diff_y = Math.abs(Player.playerMovState.y - pos.y);
+      // check if KI is right beside player (only horizontal/vertical not diagonal)
+      if ((diff_x === 1 || diff_x === 0) && (diff_y === 1 || diff_y === 0) && !(diff_y === 1 && diff_x === 1)) {
+         return 'attack';
+      } else if (diff_x < range && diff_y < range) {
+         // evaluate in which direction the KI has to move to get to the player
+         // first check if horizontal or vertical
+         if (diff_x > diff_y) {
+            // horizontal
+            return (Player.playerMovState.x - pos.x) > 0 ? 'right' : 'left';
+         } else {
+            // vertical
+            return (Player.playerMovState.y - pos.y) > 0 ? 'down' : 'up';
+         }
          return true;
       }
-      return false;
+      return;
    };
 }); 

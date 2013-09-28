@@ -19,7 +19,7 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist'], function(Game, s
     myGame.director.add('family');
 
     // Show "scene1"
-    myGame.director.show('war-2'); 
+    myGame.director.show('church'); 
   });
   
   // Set asset list for preloader

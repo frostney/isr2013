@@ -32,13 +32,16 @@
       if (['6-2', '3-4', '9-2'].indexOf(x+'-'+y) !== -1) {
          // var tempIndex = y*x%2;
          // kind = kindArr[tempIndex];
-         kind = 'obstacle ruin1';
+         kind = 'obstacle items ruin1';
       } else if (['9-6', '3-7', '10-5'].indexOf(x+'-'+y) !== -1) {
          // kind = kindArr[tempIndex];
-         kind = 'obstacle ruin2';
+         kind = 'obstacle items ruin2';
       } else if (['5-7', '3-1', '7-4'].indexOf(x+'-'+y) !== -1) {
          // kind = kindArr[tempIndex];
-         kind = 'obstacle ruin3';
+         kind = 'obstacle items ruin3';
+      } else if (['10-4'].indexOf(x+'-'+y) !== -1) {
+         // kind = kindArr[tempIndex];
+         kind = 'obstacle interactable talkable items socket tablecloth';
       } else if (['6-6', '7-8', '3-5'].indexOf(x+'-'+y) !== -1) {
          // add enemies
          enemy.push({

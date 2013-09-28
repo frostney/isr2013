@@ -120,12 +120,15 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       interactableStuff.each(function(index) {
          if ($(this).hasClass('attackable')) {
             // TODO do fancy animation
+            // remove enemy
+            $(this).remove();
          } else if ($(this).hasClass('talkable')) {
             console.log('Your are talking to someone');
             //TODO open dialog or sth similar
             if ($(this).hasClass('knight old')) {
                playerMovState.level = 1;
             } else if ($(this).hasClass('socket tablecloth')) {
+               $(this).removeClass('tablecloth');
                playerMovState.level = 2;
             } else if ($(this).hasClass('wife')) {
                playerMovState.level = 3;

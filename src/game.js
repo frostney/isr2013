@@ -4,8 +4,6 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist'], function(Game, s
   // Create a new game object
 	var myGame = new Game();
 	
-	console.log(myGame);
-	
 	// Set generated scene files
 	myGame.director.scenes = sceneList;
 	

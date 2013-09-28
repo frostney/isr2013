@@ -8,6 +8,8 @@
     }
   };
 */
+
+  console.log(scene.modules);
   var tile = [];
   
   var skyHeight = 0; 

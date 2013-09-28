@@ -1,15 +1,39 @@
-.tile
+.tile {
   display: block
   width: 80px
   height: 80px
   position: absolute
   background-repeat: no-repeat
   
-  &.knight
-    background-image:url("../assets/images/knightnpc.png")
-
-    &.right
-      background-position: -0px -0px
+  &.npc {
+    background-image:url("../assets/images/npc.png")    
+  }
+  
+  &.knight {
+    &.right {
+      background-position: -160px -0px      
+    }
       
-    &.left
-      background-position: -80px -0px
+    &.left {
+      background-position: -320px -0px
+    }
+    
+    &.old {
+      background-position: -240px -0px
+    }
+  }
+  
+  &.brother {
+    background-position: -0px -0px
+  }
+  
+  &.child {
+    background-position: -80px -0px
+  }  
+  
+  &.wive {
+    background-position: -400px -0px
+  }
+}
+      
+  

@@ -28,6 +28,8 @@
       if (['5-5', '3-8', '2-4'].indexOf(x+'-'+y) !== -1) {
          kind = 'npc knight left talkable';
          // TODO add some random left or right
+      } else if (x === 0 || x === 11) {
+         kind = 'obstacle';
       }
       tile.push({
         id: 'x' + x + '-y' + y,

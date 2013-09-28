@@ -26,21 +26,23 @@
       var kind ='';
       var style = 'top: ' + (skyHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;';
       // set master templar
-      if (x === 5 && y === 2) {
+      if (x === 5 && y === 5) {
          kind = 'npc knight old talkable';
       } // set idle templars
-        else if (['2-2','3-1', '4-1'].indexOf(x+'-'+y) !== -1) {
+        else if (['3-5','4-4', '5-4'].indexOf(x+'-'+y) !== -1) {
          kind = 'npc knight right';
            
-      } else if (['6-1', '7-1', '8-2'].indexOf(x+'-'+y) !== -1) {
+      } else if (['6-4', '7-4', '8-5'].indexOf(x+'-'+y) !== -1) {
          kind = 'npc knight left';
          // TODO add some random left or right
-      } else if (x === 7 && y === 4) {
+      } else if (x === 7 && y === 7) {
          kind = 'npc brother';
-      } else if (x === 8 && y === 4) {
+      } else if (x === 8 && y === 7) {
          kind = 'npc wife';
-      } else if (x === 9 && y === 4) {
+      } else if (x === 9 && y === 7) {
          kind = 'npc child';
+      } else if (y <= 3 || x <= 1 || x >= 10 || ['9-4', '8-4', '9-5', '2-4', '2-5', '3-5'].indexOf(x+'-'+y) !== -1) {
+         kind = 'obstacle';
       }
       tile.push({
         id: 'x' + x + '-y' + y,

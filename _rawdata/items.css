@@ -1,0 +1,23 @@
+/* ----------------------------------------------------
+   created with http://www.codeandweb.com/texturepacker 
+   ----------------------------------------------------
+   $TexturePacker:SmartUpdate:4932453918d763632dd180782196b593:1/1$
+   ----------------------------------------------------
+
+   usage: <span class="{-spritename-} sprite"></span>
+
+   replace {-spritename-} with the sprite you like to use
+
+*/
+
+.sprite {display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(items.png);}
+
+.grave1 {width:80px; height:80px; background-position: -160px -160px}
+.grave2 {width:80px; height:80px; background-position: -160px -80px}
+.road {width:80px; height:80px; background-position: -80px -160px}
+.ruin1 {width:80px; height:80px; background-position: -80px -80px}
+.ruin2 {width:80px; height:80px; background-position: -160px -0px}
+.ruin3 {width:80px; height:80px; background-position: -80px -0px}
+.sign {width:80px; height:80px; background-position: -0px -160px}
+.socket {width:80px; height:80px; background-position: -0px -80px}
+.socket_tablecloth {width:80px; height:80px; background-position: -0px -0px}

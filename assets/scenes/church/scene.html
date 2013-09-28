@@ -1,9 +1,13 @@
 <div id="tile-container" style="position: absolute;">
 {{#each tile}}
-   <div id="{{id}}" class="tile" style="{{style}}"></div>
+   {{#if kind}}
+      <div id="{{id}}" class="tile {{kind}}" style="{{style}}"></div>
+   {{else}}
+      <div id="{{id}}" class="tile" style="{{style}}"></div>
+   {{/if}}
 {{/each}}
 </div>
 
-<div id="character" class="npc knight" style="top: 160px;"></div>
+<div id="character" class="npc knight" style="top: 640px; left: 480px;"></div>
 
 <div class="attackable enemy npc brother" style="top: 320px; left: 480px;" data-x="6" data-y="4" data-movement="0"></div>

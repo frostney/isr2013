@@ -20,14 +20,26 @@
   var tileLimitX = Config.tilesLimit.x; //12
   var tileLimitY = Config.tilesLimit.y; 
   
-  // for (var i = 0; i < 9; i++) {
-  for (var i = 0; i < tileLimitY; i++) {
-    for (var j = 0; j < (tileLimitX); j++) {
-      var style = 'top: ' + (skyHeight +(tileWidth * i)) + 'px; left: '+ (tileHeight * j) + 'px;background-color:rgb('+((i+j)*10)+','+((i+j)*15)+',100)';
-
+  // for (var x = 0; x < 12; x++) {
+    for (var x= 0; x < (tileLimitX); x++) {
+      for (var y = 0; y < tileLimitY; y++) {
+      var kind ='';
+      var style = 'top: ' + (skyHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;background-color:rgb('+((x+y)*10)+','+((x+y)*15)+',100)';
+      
+         console.log('before loop');
+      if ((x < 5 || x> 7) && ((y*x)%12 == 3)) {
+         console.log('here in loop');
+         kind = 'obstacle grave';
+      } else if (x > 4 && x< 8){
+         kind = 'road';
+      } else {
+         kind = 'obstacle';
+      }
+            
       tile.push({
-        id: 'x' + i + '-y' + j,
-        style: style
+        id: 'x' + x + '-y' + y,
+        style: style,
+        kind: kind
       });
     }
   }

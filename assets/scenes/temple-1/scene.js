@@ -25,7 +25,11 @@
       for (var y = 0; y < tileLimitY; y++) {
       var kind ='';
       var style = 'top: ' + (skyHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;';
-      if (['5-5', '3-8', '2-4'].indexOf(x+'-'+y) !== -1) {
+      // if (['5-5', '3-8', '2-4'].indexOf(x+'-'+y) !== -1) {
+      if (x === 1) {
+         kind = 'npc knight right talkable';
+         // TODO add some random left or right
+      }else if (x === 10) {
          kind = 'npc knight left talkable';
          // TODO add some random left or right
       } else if (x === 0 || x === 11) {

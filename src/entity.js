@@ -36,7 +36,9 @@ define('isr/entity', ['jquery', 'isr', 'isr/config'], function($, Game, Config) 
             break;
       }
       // check if next tile is accessible
-      if ($scene.find('#x' + tileToMove.x + '-y' + tileToMove.y).hasClass('obstacle')) {
+      var sceneTile = $scene.find('#x' + tileToMove.x + '-y' + tileToMove.y);
+      // check if there is an obstacle, npc or enemy
+      if (sceneTile.hasClass('obstacle') || sceneTile.hasClass('npc') || $scene.find('.enemy[data-x="'+tileToMove.x+'"][data-y="'+tileToMove.y+'"]').length > 0) {
          return {};
       }
       return tileToMove;

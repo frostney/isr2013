@@ -1,0 +1,78 @@
+/* ----------------------------------------------------
+   created with http://www.codeandweb.com/texturepacker 
+   ----------------------------------------------------
+   $TexturePacker:SmartUpdate:4509bf5d1487f022fd0eccd211fe9257:1/1$
+   ----------------------------------------------------
+
+   usage: <span class="{-spritename-} sprite"></span>
+
+   replace {-spritename-} with the sprite you like to use
+
+*/
+
+.sprite {display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(enemy_walk.png);}
+
+.walk_down-(1) {width:80px; height:80px; background-position: -0px -0px}
+.walk_down-(10) {width:80px; height:80px; background-position: -80px -0px}
+.walk_down-(11) {width:80px; height:80px; background-position: -160px -0px}
+.walk_down-(12) {width:80px; height:80px; background-position: -240px -0px}
+.walk_down-(13) {width:80px; height:80px; background-position: -320px -0px}
+.walk_down-(14) {width:80px; height:80px; background-position: -400px -0px}
+.walk_down-(15) {width:80px; height:80px; background-position: -480px -0px}
+.walk_down-(16) {width:80px; height:80px; background-position: -560px -0px}
+.walk_down-(2) {width:80px; height:80px; background-position: -640px -0px}
+.walk_down-(3) {width:80px; height:80px; background-position: -720px -0px}
+.walk_down-(4) {width:80px; height:80px; background-position: -800px -0px}
+.walk_down-(5) {width:80px; height:80px; background-position: -880px -0px}
+.walk_down-(6) {width:80px; height:80px; background-position: -960px -0px}
+.walk_down-(7) {width:80px; height:80px; background-position: -1040px -0px}
+.walk_down-(8) {width:80px; height:80px; background-position: -1120px -0px}
+.walk_down-(9) {width:80px; height:80px; background-position: -1200px -0px}
+.walk_left-(1) {width:80px; height:80px; background-position: -0px -80px}
+.walk_left-(10) {width:80px; height:80px; background-position: -80px -80px}
+.walk_left-(11) {width:80px; height:80px; background-position: -160px -80px}
+.walk_left-(12) {width:80px; height:80px; background-position: -240px -80px}
+.walk_left-(13) {width:80px; height:80px; background-position: -320px -80px}
+.walk_left-(14) {width:80px; height:80px; background-position: -400px -80px}
+.walk_left-(15) {width:80px; height:80px; background-position: -480px -80px}
+.walk_left-(16) {width:80px; height:80px; background-position: -560px -80px}
+.walk_left-(2) {width:80px; height:80px; background-position: -640px -80px}
+.walk_left-(3) {width:80px; height:80px; background-position: -720px -80px}
+.walk_left-(4) {width:80px; height:80px; background-position: -800px -80px}
+.walk_left-(5) {width:80px; height:80px; background-position: -880px -80px}
+.walk_left-(6) {width:80px; height:80px; background-position: -960px -80px}
+.walk_left-(7) {width:80px; height:80px; background-position: -1040px -80px}
+.walk_left-(8) {width:80px; height:80px; background-position: -1120px -80px}
+.walk_left-(9) {width:80px; height:80px; background-position: -1200px -80px}
+.walk_right-(1) {width:80px; height:80px; background-position: -0px -160px}
+.walk_right-(10) {width:80px; height:80px; background-position: -80px -160px}
+.walk_right-(11) {width:80px; height:80px; background-position: -160px -160px}
+.walk_right-(12) {width:80px; height:80px; background-position: -240px -160px}
+.walk_right-(13) {width:80px; height:80px; background-position: -320px -160px}
+.walk_right-(14) {width:80px; height:80px; background-position: -400px -160px}
+.walk_right-(15) {width:80px; height:80px; background-position: -480px -160px}
+.walk_right-(16) {width:80px; height:80px; background-position: -560px -160px}
+.walk_right-(2) {width:80px; height:80px; background-position: -640px -160px}
+.walk_right-(3) {width:80px; height:80px; background-position: -720px -160px}
+.walk_right-(4) {width:80px; height:80px; background-position: -800px -160px}
+.walk_right-(5) {width:80px; height:80px; background-position: -880px -160px}
+.walk_right-(6) {width:80px; height:80px; background-position: -960px -160px}
+.walk_right-(7) {width:80px; height:80px; background-position: -1040px -160px}
+.walk_right-(8) {width:80px; height:80px; background-position: -1120px -160px}
+.walk_right-(9) {width:80px; height:80px; background-position: -1200px -160px}
+.walk_up-(1) {width:80px; height:80px; background-position: -0px -240px}
+.walk_up-(10) {width:80px; height:80px; background-position: -80px -240px}
+.walk_up-(11) {width:80px; height:80px; background-position: -160px -240px}
+.walk_up-(12) {width:80px; height:80px; background-position: -240px -240px}
+.walk_up-(13) {width:80px; height:80px; background-position: -320px -240px}
+.walk_up-(14) {width:80px; height:80px; background-position: -400px -240px}
+.walk_up-(15) {width:80px; height:80px; background-position: -480px -240px}
+.walk_up-(16) {width:80px; height:80px; background-position: -560px -240px}
+.walk_up-(2) {width:80px; height:80px; background-position: -640px -240px}
+.walk_up-(3) {width:80px; height:80px; background-position: -720px -240px}
+.walk_up-(4) {width:80px; height:80px; background-position: -800px -240px}
+.walk_up-(5) {width:80px; height:80px; background-position: -880px -240px}
+.walk_up-(6) {width:80px; height:80px; background-position: -960px -240px}
+.walk_up-(7) {width:80px; height:80px; background-position: -1040px -240px}
+.walk_up-(8) {width:80px; height:80px; background-position: -1120px -240px}
+.walk_up-(9) {width:80px; height:80px; background-position: -1200px -240px}

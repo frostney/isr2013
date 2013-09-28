@@ -1,14 +1,18 @@
 (function(scene, Lyria) {
-/*
-  scene.events = {
-    '#btnSwitch': {
-      'click': function(event) {
-        scene.parent.show('scene2');
-      }
-    }
-  };
-*/
 
+   // add event listener for changing scenes based on player position
+   scene.on('playerMoved', function(playerMovState) {
+      console.log('church checking if we need to change the scene');
+      if (playerMovState.y <= 8) {
+         scene.parent.show('temple-1');
+      } else if (playerMovState.y <= 6) {
+         scene.parent.show('war-1');
+      } else if (playerMovState.y <= 4) {
+         scene.parent.show('family');
+      } else if (playerMovState.y <= 2) {
+         alert('You´ve got your pennance');
+      }
+   });
   console.log(scene.modules);
   var Config = scene.modules.ISR.Config;
   console.log(Config);
@@ -44,43 +48,11 @@
     }
   }
 
-    $('body').keyup(function(e) {
-      var charPos = $('#character').offset();
-      
-      var up = ~~((e.keyCode === 87) || (e.keyCode === 38)); // W || Arrow up
-      var down = ~~((e.keyCode === 83) || (e.keyCode === 40)); // S || Arrow down
-      var left = ~~((e.keyCode === 65) || (e.keyCode === 37)); // A || Arrow left
-      var right = ~~((e.keyCode === 68) || (e.keyCode === 39)); // D || Arrow right  
-      
-      var direction;
-      
-      if (up) {
-        direction = 'up';
-      } else if (down) {
-        direction = 'down';
-      } else if (left) {
-        direction = 'left';
-      } else if (right) {
-        direction = 'right';
-      }
-      
-      var newPos = {
-        left: charPos.left,
-        top: charPos.top
-      };
-
-      // todo movement
-      
-    });
   scene.expose({
     title: scene.t('title', {
       'name': scene.name
       }),
     tile: tile
   });
-  
-  console.log(scene);
-  console.log(scene.game);
-  scene.log('yeeha!');
 
 })(this, arguments[1]);

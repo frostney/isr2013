@@ -14,7 +14,7 @@
   console.log(Config);
   var tile = [];
   
-  var skyHeight = 0; 
+  var churchHeight = 0; 
   var tileWidth = Config.tile.width; 
   var tileHeight = Config.tile.height; 
   var tileLimitX = Config.tilesLimit.x; //12
@@ -24,7 +24,7 @@
     for (var x= 0; x < (tileLimitX); x++) {
       for (var y = 0; y < tileLimitY; y++) {
       var kind ='';
-      var style = 'top: ' + (skyHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;background-color:rgb('+((x+y)*10)+','+((x+y)*15)+',100)';
+      var style = 'top: ' + (churchHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;';
       
          console.log('before loop');
       if ((x < 5 || x> 7) && ((y*x)%12 == 3)) {

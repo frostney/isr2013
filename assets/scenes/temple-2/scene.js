@@ -29,14 +29,17 @@
       if (x === 5 && y === 2) {
          kind = 'npc knight old';
       } // set idle templars
-      else if (['5-5', '3-8', '2-4'].indexOf(x+'-'+y) !== -1) {
+        else if (['2-2','3-1', '4-1'].indexOf(x+'-'+y) !== -1) {
+         kind = 'npc knight right';
+           
+      } else if (['6-1', '7-1', '8-2'].indexOf(x+'-'+y) !== -1) {
          kind = 'npc knight left';
          // TODO add some random left or right
-      } else if (x === 7 && y === 3) {
+      } else if (x === 7 && y === 4) {
          kind = 'npc brother';
-      } else if (x === 8 && y === 3) {
+      } else if (x === 8 && y === 4) {
          kind = 'npc wife';
-      } else if (x === 9 && y === 3) {
+      } else if (x === 9 && y === 4) {
          kind = 'npc child';
       }
       tile.push({

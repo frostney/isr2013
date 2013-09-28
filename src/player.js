@@ -15,7 +15,8 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       'y' : 2,
       'facing' : 'up',
       // var to indicate if character is currently moving
-      'moving' : false
+      'moving' : false,
+      'level' : 0
    };
    var lives = 3;
    var startTime = 0;

@@ -5,10 +5,10 @@
          return;
       }
       console.log('war-1 checking if we need to change the scene, current '+scene.parent.currentScene.name);
-      if (playerMovState.x === 11) {
+      if (playerMovState.x === 11 && playerMovState.level === 1) {
          scene.parent.show('war-2');
-      } else if (playerMovState.x === 0 && false) {
-      // TODO add check if player has found the holy table cloth
+      } else if (playerMovState.x === 0 && playerMovState.level === 2) {
+      // check if player has found the holy table cloth
          scene.parent.show('church');
       }
    });

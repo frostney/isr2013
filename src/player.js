@@ -2,10 +2,10 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
    var $activeScene;
    var $activeCharacter;
    var scenePlayer = {
-      'church' : {'x': 8, 'y' : 9},
-      'family' : {'x': 8, 'y' : 9},
-      'temple-1' : {'x': 8, 'y' : 9},
-      'temple-2' : {'x': 8, 'y' : 9},
+      'church' : {'x': 5, 'y' : 8},
+      'family' : {'x': 5, 'y' : 8},
+      'temple-1' : {'x': 5, 'y' : 8},
+      'temple-2' : {'x': 5, 'y' : 8},
       'war-1' : {'x': 0, 'y' : 3},
       'war-2' : {'x': 0, 'y' : 3}
    };
@@ -33,10 +33,9 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       // get last player pos of player of this scene
       playerMovState.x = scenePlayer[sceneName].x;
       playerMovState.y = scenePlayer[sceneName].y;
-      $activeCharacter.offset({
-         'left' : (playerMovState.x - 1) * Config.tile.width,
-         'top' : (playerMovState.y - 1) * Config.tile.height
-      });
+      $activeCharacter.css('left', playerMovState.x * Config.tile.width);
+      $activeCharacter.css('top', playerMovState.y * Config.tile.height);
+
    });
    
    $('body').keyup(function(e) {

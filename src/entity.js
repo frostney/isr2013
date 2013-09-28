@@ -35,7 +35,6 @@ define('isr/entity', ['jquery', 'isr', 'isr/config'], function($, Game, Config) 
             tileToMove.y += 1;
             break;
       }
-
       // check if next tile is accessible
       if ($scene.find('#x' + tileToMove.x + '-y' + tileToMove.y).hasClass('obstacle')) {
          return {};
@@ -88,6 +87,7 @@ define('isr/entity', ['jquery', 'isr', 'isr/config'], function($, Game, Config) 
          }
          options.elemMovState.moving = true;
          $.extend(true, options.elemMovState, targetTiles);
+         options.$element.removeClass('left right up down').addClass(options.direction);
          options.$element.animate(movOptions, 'slow', function() {
             // TODO add player rotation in the right direction
             options.elemMovState.moving = false;
@@ -98,6 +98,7 @@ define('isr/entity', ['jquery', 'isr', 'isr/config'], function($, Game, Config) 
          return true;
       } else {
          // TODO add player rotation in the right direction
+         options.$element.removeClass('left right up down').addClass(options.direction);
          options.elemMovState.facing = options.direction;
          return false;
       }

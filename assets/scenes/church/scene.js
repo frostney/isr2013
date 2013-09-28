@@ -31,10 +31,13 @@
       for (var y = 0; y < tileLimitY; y++) {
       var kind ='';
       var style = 'top: ' + (churchHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;';
-      if ((x < 5 || x> 7) && ((y*x)%12 == 3)) {
-         kind = 'obstacle items grave1';
-      } else if (x > 4 && x < 8 && y > 3){
+      if (x > 4 && x < 8 && y > 3){
          kind = 'items road';
+      } else if (['1-1','1-4','2-1', '2-4', '3-1', '3-4','10-1'].indexOf(x+'-'+y) !== -1) {
+         kind = 'obstacle items grave1';
+      } else if (['2-2', '2-5', '3-2', '3-5', '11-1'].indexOf(x+'-'+y) !== -1) {
+         kind = 'obstacle items grave2';
+         // TODO add some random left or right
       } else {
          kind = 'obstacle';
       }

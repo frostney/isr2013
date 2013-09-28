@@ -41,7 +41,7 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
             // direction = 'up';
             // TODO attack player
             if (direction === 'attack') {
-               alert('ATTACK');
+               console.log('attacking player');
                direction = undefined;
                Player.decreaseLives();
             }

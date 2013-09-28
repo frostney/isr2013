@@ -150,7 +150,6 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       });
       if (!foundSth) {
          //TODO add fancy sword swing into empty air
-         alert('You successfully killed empty air');
       }
    };
    

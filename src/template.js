@@ -1,10 +1,10 @@
-define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist'], function(Game, sceneList, assetList) {
+define('isr', ['lyria/game', 'isr/scene', 'isr/scenelist', 'isr/assetlist'], function(Game, Scene, sceneList, assetList) {
   'use strict';
   
   // Create a new game object
 	var myGame = new Game();
 	
-	console.log(myGame);
+	Scene.requireAlways['isr/config'] = 'ISR.Config';
 	
 	// Set generated scene files
 	myGame.director.scenes = sceneList;

@@ -18,6 +18,7 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       'moving' : false,
       'level' : 0
    };
+   var $dialogWindow = $('#dialog');
    var lives = 3;
    var startTime = 0;
    
@@ -70,6 +71,7 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       
       // move player
       if (!playerMovState.moving && direction) {
+        $dialogWindow.addClass('hidden');
         Entity.move({
            'elemMovState' : playerMovState,
            '$scene' : $activeScene,
@@ -116,26 +118,37 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
          break;
       }
       // check if on there is sth on the tile the player is facing to interact with
-      var interactableStuff = $activeScene.find('#x' + targetTile.x + '-y' + targetTile.y + '.interactable');
-      interactableStuff.each(function(index) {
-         if ($(this).hasClass('attackable')) {
-            // TODO do fancy animation
-            // remove enemy
-            $(this).remove();
-         } else if ($(this).hasClass('talkable')) {
-            console.log('Your are talking to someone');
-            //TODO open dialog or sth similar
-            if ($(this).hasClass('knight old')) {
-               playerMovState.level = 1;
-            } else if ($(this).hasClass('socket tablecloth')) {
-               $(this).removeClass('tablecloth');
-               playerMovState.level = 2;
-            } else if ($(this).hasClass('wife')) {
-               playerMovState.level = 3;
-            }
+      var foundSth = false;
+      $activeScene.find('#x' + targetTile.x + '-y' + targetTile.y + '.talkable').each(function(index) {
+         foundSth = true;
+         $dialogWindow.css('left', parseInt($(this).css('left')) + Config.tile.width).css('top', $(this).css('top'));
+         console.log('Your are talking to someone');
+         //TODO open dialog or sth similar
+         if ($(this).hasClass('knight old')) {
+            $dialogWindow.text(Config.dialog.masterTemplar);
+            playerMovState.level = 1;
+         } else if ($(this).hasClass('socket tablecloth')) {
+            $dialogWindow.text(Config.dialog.socket);
+            $(this).removeClass('tablecloth');
+            playerMovState.level = 2;
+         } else if ($(this).hasClass('wife')) {
+            $dialogWindow.text(Config.dialog.wife2);
+            playerMovState.level = 3;
+         } else if ($(this).hasClass('sign')) {
+            $dialogWindow.text(Config.dialog.sign);
+         } else if ($(this).hasClass('knight')) {
+            $dialogWindow.text(Config.dialog.mumble);
          }
+         $dialogWindow.removeClass('hidden');
       });
-      if (interactableStuff.length === 0) {
+      // attack
+      $activeScene.find('.attackable[data-x="' + targetTile.x + '"][data-y="' + targetTile.y + '"]').each(function(index) {
+         foundSth = true;
+         // TODO do fancy animation
+         // remove enemy
+         $(this).remove();
+      });
+      if (!foundSth) {
          //TODO add fancy sword swing into empty air
          alert('You successfully killed empty air');
       }

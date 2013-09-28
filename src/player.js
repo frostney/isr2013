@@ -35,8 +35,8 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       playerMovState.x = scenePlayer[sceneName].x;
       playerMovState.y = scenePlayer[sceneName].y;
       $activeCharacter.offset({
-         'left' : playerMovState.x * Config.tiles.width,
-         'top' : playerMovState.y * Config.tiles.height
+         'left' : playerMovState.x * Config.tile.width,
+         'top' : playerMovState.y * Config.tile.height
       });
    });
    

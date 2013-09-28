@@ -10,7 +10,7 @@
     "tests"
   ],
   "dependencies": {
-    "lyria": "~0.2.0-beta4",
+    "lyria": "~0.2.0-beta5",
     "normalize-css": "~2.1.2",
     "fastclick": "~0.6.9",
     "fpsmeter": "~0.3.1"

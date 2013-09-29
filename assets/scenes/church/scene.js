@@ -34,14 +34,15 @@
   var tileLimitX = Config.tilesLimit.x; //12
   var tileLimitY = Config.tilesLimit.y; 
   
-  // for (var x = 0; x < 12; x++) {
     for (var x= 0; x < (tileLimitX); x++) {
-      for (var y = 0; y < tileLimitY; y++) {
+      for (var y= 0; y < tileLimitY; y++) {
       var kind ='';
       var style = 'top: ' + (churchHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;';
       if (x > 4 && x < 8 && y > 3){
          kind = 'items road';
-      } else if (['1-1','1-4','2-1', '2-4', '3-1', '3-4','10-1'].indexOf(x+'-'+y) !== -1) {
+      } else if(['0-0', '0-2','4-5', '4-6', '10-0','11-0'].indexOf(x+'-'+y) !== -1) {
+         kind = 'obstacle items tree';
+      } else if (['1-0', '2-0', '2-1', '3-1','1-4', '2-4', '3-4','10-1'].indexOf(x+'-'+y) !== -1) {
          kind = 'obstacle items grave1';
       } else if (['2-2', '2-5', '3-2', '3-5', '11-1'].indexOf(x+'-'+y) !== -1) {
          kind = 'obstacle items grave2';

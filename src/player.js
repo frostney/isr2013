@@ -31,11 +31,13 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       console.log('switched scene to ' +sceneName);
       $activeScene = $('#' + sceneName);
       $activeCharacter = $activeScene.find('.character');
-      // get last player pos of player of this scene
-      playerMovState.x = scenePlayer[sceneName].x;
-      playerMovState.y = scenePlayer[sceneName].y;
-      $activeCharacter.css('left', playerMovState.x * Config.tile.width);
-      $activeCharacter.css('top', playerMovState.y * Config.tile.height);
+      if ($activeCharacter.length > 0) {
+         // get last player pos of player of this scene
+         playerMovState.x = scenePlayer[sceneName].x;
+         playerMovState.y = scenePlayer[sceneName].y;
+         $activeCharacter.css('left', playerMovState.x * Config.tile.width);
+         $activeCharacter.css('top', playerMovState.y * Config.tile.height);
+      }
 
    });
    

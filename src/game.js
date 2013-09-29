@@ -11,7 +11,7 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist'], function(Game, s
 	myGame.preloader.on('complete', function() {
 	   
     // Add "scene1" to director
-    myGame.director.add('intro')
+    myGame.director.add('intro');
     myGame.director.add('church');
     myGame.director.add('temple-1');
     myGame.director.add('temple-2');
@@ -22,7 +22,7 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist'], function(Game, s
     myGame.viewport.$element.append('<div id="dialog" style="display: none"><span class="who"></span><span class="what"></span></div>');
 
     // Show "scene1"
-    myGame.director.show('church');
+    myGame.director.show('intro');
   });
   
   // Set asset list for preloader

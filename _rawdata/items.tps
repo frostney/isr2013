@@ -168,6 +168,7 @@
             <filename>arrow_right.png</filename>
             <filename>arrow_down.png</filename>
             <filename>enemy_dead.png</filename>
+            <filename>wall.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

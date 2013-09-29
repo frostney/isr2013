@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>css</string>
         <key>textureFileName</key>
-        <filename>character_walk.png</filename>
+        <filename>enemy_walk.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>character_walk.css</filename>
+        <filename>enemy_walk.css</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -148,10 +148,10 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>character/walk_down</filename>
-            <filename>character/walk_left</filename>
-            <filename>character/walk_right</filename>
-            <filename>character/walk_up</filename>
+            <filename>enemy/down</filename>
+            <filename>enemy/left</filename>
+            <filename>enemy/right</filename>
+            <filename>enemy/up</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

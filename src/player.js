@@ -155,7 +155,12 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
          }
          $dialogWindow.fadeIn(300);
       });
-      // attack
+      // TODO make die animation more generic
+      $activeScene.find('#x' + targetTile.x + '-y' + targetTile.y + '.attackable').each(function(index) {
+         $(this).remove();
+      });
+      // attack non attackable element
+      // attack moving attackable element
       $activeScene.find('.attackable[data-x="' + targetTile.x + '"][data-y="' + targetTile.y + '"]').each(function(index) {
          foundSth = true;
       // TODO do fancy animation

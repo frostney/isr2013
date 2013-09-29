@@ -34,9 +34,9 @@
     "url": "https://github.com/freezedev/lyria-template.git"
   },
   "lyriaProject": {
-    "author": "Johannes Stein",
-    "title": "ISR 2013",
-    "description": "Kill the Achmeds!!!!",
+    "author": "Johannes Stein, Dawid Pach and Claudiu Coman",
+    "title": "In Sanctum Repentum",
+    "description": "Repent for your sins, templar",
     "lib": {
       "managed": "bower",
       "unmanaged": "./lib"

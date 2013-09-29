@@ -5,6 +5,7 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math', 
    };
    var $currentScene;
    var $currentEnemies;
+   var active = false;
    Game.director.on('scene:change', function(sceneName) {
       // only start enemy movement if scene is active
       if (sceneName === 'war-1' || sceneName === 'war-2') {
@@ -17,13 +18,19 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math', 
             repeat : true,
             interval : 2500
          });
+         active = Game.director.currentScene.name;
       } else {
+         active = undefined;
          Game.director.currentScene.off('startKIMovement');
       }
    });
 //TODO separate walking from attacking
 //TODO add memory of blocked directions
    var kiMovement = function() {
+      // cancel event if different scene or active === undefined
+      if (!active || active !== Game.director.currentScene.name) {
+         return;
+      }
       $currentEnemies.each(function() {
          // check if this enemy was killed and skip him
          if ($(this).parent().length === 0 || $(this).hasClass('dead')) {

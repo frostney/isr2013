@@ -9,7 +9,7 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist', 'lyria/audio'], f
    // If preloader is complete, everything in this function happens
    myGame.preloader.on('complete', function() {
       myGame.audio = new Audio();
-      myGame.audio.addAudioElement('intro', {
+      myGame.audio.addAudioElement('theme', {
         filepath: 'assets/audio/intro.ogg',
         loop : true,
         play: true

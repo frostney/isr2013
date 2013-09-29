@@ -67,11 +67,11 @@
    }
    var Player = scene.modules.ISR.Player;
    scene.on('active', function() {
-      if (Player.playerMovState.level === 2) {
+      if (Player.playerMovState.level === 1) {
          // hide left arrows
          $('.tile.arrow.right').addClass('items');
          $('.tile.arrow.left').removeClass('items');
-      } else if (Player.playerMovState.level === 3) {
+      } else if (Player.playerMovState.level === 2) {
          $('.tile.arrow.left').addClass('items');
          $('.tile.arrow.right').removeClass('items');
       }

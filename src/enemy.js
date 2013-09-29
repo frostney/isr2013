@@ -23,7 +23,7 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
    });
 
    var kiMovement = function() {
-      $currentEnemies.each(function() {
+      $currentEnemies.not('.dead').each(function() {
          var $enemy = $(this);
          var pos = {
             'x' : parseInt($enemy.attr('data-x')),

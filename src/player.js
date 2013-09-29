@@ -151,9 +151,15 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       // attack
       $activeScene.find('.attackable[data-x="' + targetTile.x + '"][data-y="' + targetTile.y + '"]').each(function(index) {
          foundSth = true;
-         // TODO do fancy animation
-         // remove enemy
+      // TODO do fancy animation
+         $(this).addClass('dead');
+         var tileX = $(this).attr('data-x');
+         var tileY = $(this).attr('data-y');
          $(this).remove();
+         // remove enemy
+         $(this).fadeOut('slow').fadeIn('slow', function() {
+            $activeScene.find('#x' + tileX + '-y' + tileY).addClass('items dead');
+         });
       });
       if (!foundSth) {
          //TODO add fancy sword swing into empty air

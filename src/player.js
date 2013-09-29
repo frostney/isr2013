@@ -131,9 +131,13 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
             $dialogWindow.text(Config.dialog.socket);
             $(this).removeClass('tablecloth');
             playerMovState.level = 2;
+            // show scene arrows
+            $(this).parents('tile-container:first').find('.tile.arrow.left').addClass('items');
          } else if ($(this).hasClass('wife')) {
             $dialogWindow.text(Config.dialog.wife2);
             playerMovState.level = 3;
+            // show scene arrows
+            $(this).parents('tile-container:first').find('.tile.arrow.up').addClass('items');
          } else if ($(this).hasClass('sign')) {
             $dialogWindow.text(Config.dialog.sign);
          } else if ($(this).hasClass('knight')) {

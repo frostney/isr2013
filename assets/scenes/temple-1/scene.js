@@ -29,11 +29,13 @@
       if (x === 1) {
          kind = 'npc knight right talkable';
          // TODO add some random left or right
-      }else if (x === 10) {
+      } else if (x === 10) {
          kind = 'npc knight left talkable';
          // TODO add some random left or right
       } else if (x === 0 || x === 11) {
          kind = 'obstacle';
+      } else if ((x >= 2 || x <= 9) && y) {
+         kind = 'items arrow up';
       }
       tile.push({
         id: 'x' + x + '-y' + y,

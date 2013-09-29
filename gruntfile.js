@@ -189,7 +189,7 @@ module.exports = function(grunt) {
       },
       template: {
         files: 'template.html',
-        tasks: ['template:development']
+        tasks: ['bower']
       },
       concat: {
         files: 'src/**/*.js',

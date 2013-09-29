@@ -33,7 +33,7 @@
   background-position: -960px 0px
 }
 
-#church {
+#church, #gameover, #outro {
   background-image: url("../assets/images/grass.png")
 }
 
@@ -50,21 +50,7 @@
   background: url("../assets/images/house.png")
 }
 
-#intro {
-  
-  .message {
-    position: absolute
-    width: 400px
-    text-align: center
-    background-color: #332A69
-    font-weight: bold
-    padding: 8px
-    border-radius: 4px
-    border: 1px solid #ccc
-    box-shadow: 0px 0px 8px #444
-    color: white
-  }
-  
+#intro, #outro {
   #message0 {
     bottom: 150px
     right: 200px
@@ -80,18 +66,40 @@
     right: 8px
   }
   
-  .continue {
-    left: 50%;
+  #message3 {
+    left: 50%
+    top: 320px
     margin-left: -200px
-    background-color: white
-    color: black
-    cursor: pointer
-    top: 400px
-    transition: 300ms ease-in-out 0ms
     
-    &:hover {
-      background-color: yellow
+    a {
+      color: yellow
     }
   }
+}
+
+.message {
+  position: absolute
+  width: 400px
+  text-align: center
+  background-color: #332A69
+  font-weight: bold
+  padding: 8px
+  border-radius: 4px
+  border: 1px solid #ccc
+  box-shadow: 0px 0px 8px #444
+  color: white
+}
+
+.continue {
+  left: 50%;
+  margin-left: -200px
+  background-color: white
+  color: black
+  cursor: pointer
+  top: 400px
+  transition: 300ms ease-in-out 0ms
   
+  &:hover {
+    background-color: yellow
+  }
 }

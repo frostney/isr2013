@@ -76,7 +76,7 @@
             <key>sizeConstraints</key>
             <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
             <key>forceSquared</key>
-            <false/>
+            <true/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -154,6 +154,8 @@
             <filename>knightnpc_old.png</filename>
             <filename>knightnpc_right.png</filename>
             <filename>wive.png</filename>
+            <filename>knight_npc_spear_right.png</filename>
+            <filename>knight_npc_spear_left.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

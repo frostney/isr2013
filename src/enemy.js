@@ -26,7 +26,7 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
    var kiMovement = function() {
       $currentEnemies.each(function() {
          // check if this enemy was killed and skip him
-         if ($(this).parent().length === 0) {
+         if ($(this).parent().length === 0 || $(this).hassClass('dead')) {
             return true;
          }
          var $enemy = $(this);

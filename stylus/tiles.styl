@@ -6,33 +6,16 @@
   background-repeat: no-repeat
   
   &.npc {
-    background-image:url("../assets/images/npc.png")    
-  }
-  
-  &.knight {
-    &.right {
-      background-position: -160px -0px      
-    }
-      
-    &.left {
-      background-position: -320px -0px
-    }
+    background-image:url("../assets/images/npc.png")
     
-    &.old {
-      background-position: -240px -0px
-    }
-  }
-  
-  &.brother {
-    background-position: -0px -0px
-  }
-  
-  &.child {
-    background-position: -80px -0px
-  }  
-  
-  &.wife {
-    background-position: -400px -0px
+    &.brother {background-position: -0px -0px}
+    &.child {background-position: -80px -0px}
+    &.knight.spear.left {background-position: -160px -0px}
+    &.knight.spear.right {background-position: -0px -80px}
+    &.knight.left {background-position: -80px -80px}
+    &.knight.old {background-position: -160px -80px}
+    &.knight.right {background-position: -0px -160px}
+    &.wife {background-position: -80px -160px}
   }
   
   &.items {
@@ -45,7 +28,7 @@
     &.bed {background-position: -320px -0px}
     &.chair {background-position: -0px -80px}
     &.dummy {background-position: -80px -80px}
-    &.enemy.dead {background-position: -160px -80px}
+    &.dead {background-position: -160px -80px}
     &.grave1 {background-position: -240px -80px}
     &.grave2 {background-position: -320px -80px}
     &.gravehill {background-position: -0px -160px}

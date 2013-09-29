@@ -70,13 +70,13 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
             <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
             <key>forceSquared</key>
-            <false/>
+            <true/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -163,6 +163,11 @@
             <filename>chair.png</filename>
             <filename>dummy.png</filename>
             <filename>table.png</filename>
+            <filename>arrow_left.png</filename>
+            <filename>arrow_up.png</filename>
+            <filename>arrow_right.png</filename>
+            <filename>arrow_down.png</filename>
+            <filename>enemy_dead.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

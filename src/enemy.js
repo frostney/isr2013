@@ -21,9 +21,14 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
          Game.director.currentScene.off('startKIMovement');
       }
    });
-
+//TODO separate walking from attacking
+//TODO add memory of blocked directions
    var kiMovement = function() {
       $currentEnemies.each(function() {
+         // check if this enemy was killed and skip him
+         if ($(this).parent().length === 0) {
+            return true;
+         }
          var $enemy = $(this);
          var pos = {
             'x' : parseInt($enemy.attr('data-x')),

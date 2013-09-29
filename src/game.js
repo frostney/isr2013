@@ -1,4 +1,4 @@
-define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist', 'jquery',], function(Game, sceneList, assetList, $) {
+define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist'], function(Game, sceneList, assetList) {
   'use strict';
   
   // Create a new game object
@@ -18,7 +18,7 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist', 'jquery',], funct
     myGame.director.add('war-2');
     myGame.director.add('family');
 
-    myGame.viewport.$element.append('<div id="dialog" class="hidden"></div>');
+    myGame.viewport.$element.append('<div id="dialog" style="display: none"><span class="who"></span><span class="what"></span></div>');
 
     // Show "scene1"
     myGame.director.show('church');

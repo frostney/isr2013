@@ -54,9 +54,44 @@
   
   .message {
     position: absolute
-    left: 50%;
     width: 400px
+    text-align: center
+    background-color: #332A69
+    font-weight: bold
+    padding: 8px
+    border-radius: 4px
+    border: 1px solid #ccc
+    box-shadow: 0px 0px 8px #444
+    color: white
+  }
+  
+  #message0 {
+    bottom: 150px
+    right: 200px
+  }
+  
+  #message1 {
+    bottom: 100px
+    right: 77px
+  }
+  
+  #message2 {
+    bottom: 50px
+    right: 8px
+  }
+  
+  .continue {
+    left: 50%;
     margin-left: -200px
+    background-color: white
+    color: black
+    cursor: pointer
+    top: 400px
+    transition: 300ms ease-in-out 0ms
+    
+    &:hover {
+      background-color: yellow
+    }
   }
   
 }

@@ -20,7 +20,7 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist'], function(Game, s
     myGame.director.add('family');
 
     myGame.viewport.$element.append('<div id="dialog" style="display: none"><span class="who"></span><span class="what"></span></div>');
-    myGame.viewport.$element.append('<div id="tutorial">Press <span class="key">W</span>, <span class="key">S</span>, <span class="key">A</span> and <span class="key">D</span> to move around <br /><br />Press <span class="key">F</span> to interact or fight.</div>')
+    myGame.viewport.$element.append('<div id="tutorial">Press <span class="key">W</span>, <span class="key">S</span>, <span class="key">A</span> or <span class="key">D</span> to move around <br /><br />Press <span class="key">F</span> to interact or fight.</div>')
 
     // Show "scene1"
     myGame.director.show('intro');

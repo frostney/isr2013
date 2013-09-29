@@ -1,6 +1,6 @@
 <div class="logo"></div>
 
-<div class="continue">Click here to continue</div>
+<div class="message continue">Click here to continue</div>
 {{#each message}}
-  <div class="message">{{.}}</div>
+  <div id="message{{@index}}" class="message">{{.}}</div>
 {{/each}}

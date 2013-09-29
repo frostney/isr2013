@@ -29,7 +29,7 @@
       if (x === 1 && y%2==0) {
          kind = 'npc knight right talkable';
          // add some random left or right
-      }else if (x === 10 && y%2==0) {
+      } else if (x === 10 && y%2==0) {
          kind = 'npc knight left talkable';
          // add some knights
       } else if (['3-3', '8-5'].indexOf(x+'-'+y) !== -1) {
@@ -41,6 +41,8 @@
          kind = 'npc knight left talkable';
       } else if (x === 0 || x === 11) {
          kind = 'obstacle';
+      } else if ((x >= 2 || x <= 9) && y === 0) {
+         kind = 'items arrow up';
       }
       tile.push({
         id: 'x' + x + '-y' + y,

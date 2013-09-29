@@ -30,6 +30,7 @@
     <script>
       require(['lyria/scene'], function(Scene) {
         Scene.requireAlways['isr/config'] = 'ISR.Config';
+        Scene.requireAlways['isr/player'] = 'ISR.Player';
         
         require(['{{mainModule}}', 'isr/player', 'isr/enemy']);
       });

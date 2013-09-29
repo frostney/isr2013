@@ -41,7 +41,10 @@
          kind = 'obstacle items ruin3';
       } else if (['10-4'].indexOf(x+'-'+y) !== -1) {
          // kind = kindArr[tempIndex];
-         kind = 'obstacle interactable talkable items socket tablecloth';
+         kind = 'obstacle talkable items socket tablecloth';
+      } else if (x === 0) {
+         // without left class
+         kind = 'arrow left';
       } else if (['4-3','4-4','9-3', '9-4', '9-5'].indexOf(x+'-'+y) !== -1) {
          // add enemies
          enemy.push({
@@ -59,7 +62,7 @@
       
     }
   }
-
+   
   scene.expose({
     title: scene.t('title', {
       'name': scene.name

@@ -18,7 +18,6 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       'moving' : false,
       'level' : 0
    };
-   var $dialogWindow = $('#dialog');
    var lives = 3;
    var startTime = 0;
    
@@ -40,7 +39,7 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
 
    });
    
-   $('body').keyup(function(e) {
+   $('body').keydown(function(e) {
       var charPos = $activeCharacter.offset();
       // W || Arrow up
       var up = ~~((e.keyCode === 87) || (e.keyCode === 38));
@@ -71,7 +70,9 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       
       // move player
       if (!playerMovState.moving && direction) {
-        $dialogWindow.fadeOut(500);
+        if ($('#dialog').length > 0) {
+          $('#dialog').fadeOut(500);
+        }
         Entity.move({
            'elemMovState' : playerMovState,
            '$scene' : $activeScene,
@@ -98,6 +99,8 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
     * Function to do stuff like fight or talk
     */
    var doAction = function() {
+     var $dialogWindow = $('#dialog');
+     
       // first check direction
       var targetTile = {
          x : playerMovState.x,
@@ -135,10 +138,14 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
             $dialogWhat.text(Config.dialog.socket.what);
             $(this).removeClass('tablecloth');
             playerMovState.level = 2;
+            // show scene arrows
+            $(this).parents('tile-container:first').find('.tile.arrow.left').addClass('items');
          } else if ($(this).hasClass('wife')) {
             $dialogWho.text(Config.dialog.wife2.who);
             $dialogWhat.text(Config.dialog.wife2.what);
             playerMovState.level = 3;
+            // show scene arrows
+            $(this).parents('tile-container:first').find('.tile.arrow.up').addClass('items');
          } else if ($(this).hasClass('sign')) {
             $dialogWho.text(Config.dialog.sign.who);
             $dialogWhat.text(Config.dialog.sign.what);

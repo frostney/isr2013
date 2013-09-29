@@ -71,7 +71,7 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       
       // move player
       if (!playerMovState.moving && direction) {
-        $dialogWindow.addClass('hidden');
+        $dialogWindow.fadeOut(500);
         Entity.move({
            'elemMovState' : playerMovState,
            '$scene' : $activeScene,
@@ -122,24 +122,31 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       $activeScene.find('#x' + targetTile.x + '-y' + targetTile.y + '.talkable').each(function(index) {
          foundSth = true;
          $dialogWindow.css('left', parseInt($(this).css('left')) + Config.tile.width).css('top', $(this).css('top'));
+         $dialogWho = $dialogWindow.find('.who');
+         $dialogWhat = $dialogWindow.find('.what');
          console.log('Your are talking to someone');
          //TODO open dialog or sth similar
          if ($(this).hasClass('knight old')) {
-            $dialogWindow.text(Config.dialog.masterTemplar);
+            $dialogWho.text(Config.dialog.masterTemplar.who);
+            $dialogWhat.text(Config.dialog.masterTemplar.what);
             playerMovState.level = 1;
          } else if ($(this).hasClass('socket tablecloth')) {
-            $dialogWindow.text(Config.dialog.socket);
+            $dialogWho.text(Config.dialog.socket.who);
+            $dialogWhat.text(Config.dialog.socket.what);
             $(this).removeClass('tablecloth');
             playerMovState.level = 2;
          } else if ($(this).hasClass('wife')) {
-            $dialogWindow.text(Config.dialog.wife2);
+            $dialogWho.text(Config.dialog.wife2.who);
+            $dialogWhat.text(Config.dialog.wife2.what);
             playerMovState.level = 3;
          } else if ($(this).hasClass('sign')) {
-            $dialogWindow.text(Config.dialog.sign);
+            $dialogWho.text(Config.dialog.sign.who);
+            $dialogWhat.text(Config.dialog.sign.what);
          } else if ($(this).hasClass('knight')) {
-            $dialogWindow.text(Config.dialog.mumble);
+            $dialogWho.text(Config.dialog.knight.who);
+            $dialogWhat.text(Config.dialog.knight.what);
          }
-         $dialogWindow.removeClass('hidden');
+         $dialogWindow.fadeIn(300);
       });
       // attack
       $activeScene.find('.attackable[data-x="' + targetTile.x + '"][data-y="' + targetTile.y + '"]').each(function(index) {

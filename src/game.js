@@ -5,6 +5,9 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist', 'lyria/audio', 'j
 
    // Set generated scene files
    myGame.director.scenes = sceneList;
+   
+   myGame.viewport.width = 960;
+   myGame.viewport.height = 720;
 
    // If preloader is complete, everything in this function happens
    myGame.preloader.on('complete', function() {

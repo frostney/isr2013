@@ -1,7 +1,7 @@
 /* ----------------------------------------------------
    created with http://www.codeandweb.com/texturepacker 
    ----------------------------------------------------
-   $TexturePacker:SmartUpdate:4c40c67f37ecaeb89a978906b6498489:1/1$
+   $TexturePacker:SmartUpdate:2a78fbeabd3fa60b08aba9e953d1fe1a:1/1$
    ----------------------------------------------------
 
    usage: <span class="{-spritename-} sprite"></span>
@@ -14,7 +14,9 @@
 
 .brother {width:80px; height:80px; background-position: -0px -0px}
 .child {width:80px; height:80px; background-position: -80px -0px}
-.knightnpc_left {width:80px; height:80px; background-position: -160px -0px}
-.knightnpc_old {width:80px; height:80px; background-position: -240px -0px}
-.knightnpc_right {width:80px; height:80px; background-position: -320px -0px}
-.wive {width:80px; height:80px; background-position: -400px -0px}
+.knight_npc_spear_left {width:80px; height:80px; background-position: -160px -0px}
+.knight_npc_spear_right {width:80px; height:80px; background-position: -0px -80px}
+.knightnpc_left {width:80px; height:80px; background-position: -80px -80px}
+.knightnpc_old {width:80px; height:80px; background-position: -160px -80px}
+.knightnpc_right {width:80px; height:80px; background-position: -0px -160px}
+.wive {width:80px; height:80px; background-position: -80px -160px}

@@ -26,12 +26,19 @@
       var kind ='';
       var style = 'top: ' + (skyHeight +(tileWidth * y)) + 'px; left: '+ (tileHeight * x) + 'px;';
       // if (['5-5', '3-8', '2-4'].indexOf(x+'-'+y) !== -1) {
-      if (x === 1) {
+      if (x === 1 && y%2==0) {
          kind = 'npc knight right talkable';
-         // TODO add some random left or right
-      }else if (x === 10) {
+         // add some random left or right
+      }else if (x === 10 && y%2==0) {
          kind = 'npc knight left talkable';
-         // TODO add some random left or right
+         // add some knights
+      } else if (['3-3', '8-5'].indexOf(x+'-'+y) !== -1) {
+         // kind = kindArr[tempIndex];
+         kind = 'obstacle items dummy attackable';
+      } else if (['2-3'].indexOf(x+'-'+y) !== -1) {
+         kind = 'npc knight right talkable';
+      } else if (['4-3', '9-5'].indexOf(x+'-'+y) !== -1) {
+         kind = 'npc knight left talkable';
       } else if (x === 0 || x === 11) {
          kind = 'obstacle';
       }

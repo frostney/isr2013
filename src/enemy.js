@@ -26,6 +26,7 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math', 
    });
 //TODO separate walking from attacking
 //TODO add memory of blocked directions
+//TODO if the shortest path to player is blocked reevaluate path
    var kiMovement = function() {
       // cancel event if different scene or active === undefined
       if (!active || active !== Game.director.currentScene.name) {

@@ -304,6 +304,8 @@ module.exports = function(grunt) {
           if (!value.endsWith('.js')) {
             value += path.sep + key + '.js';
           }
+          
+          value = value.split('\\').join('/');
 
           if (libFilesPriorities.indexOf(key) >= 0) {
             templateScripts.development.unshift(value);

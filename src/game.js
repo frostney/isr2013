@@ -1,4 +1,4 @@
-define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist', 'lyria/audio'], function(Game, sceneList, assetList, Audio) {'use strict';
+define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist', 'lyria/audio', 'jquery'], function(Game, sceneList, assetList, Audio, $) {'use strict';
 
    // Create a new game object
    var myGame = new Game();
@@ -8,6 +8,8 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist', 'lyria/audio'], f
 
    // If preloader is complete, everything in this function happens
    myGame.preloader.on('complete', function() {
+     $('#loading').remove();
+     
       myGame.audio = new Audio();
       myGame.audio.addAudioElement('theme', {
         filepath: 'assets/audio/intro.ogg',

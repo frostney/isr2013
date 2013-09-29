@@ -90,7 +90,7 @@ define('isr/entity', ['jquery', 'isr', 'isr/config', 'lyria/loop'], function($, 
          options.elemMovState.moving = true;
          $.extend(true, options.elemMovState, targetTiles);
          options.$element.removeClass('left right up down').addClass(options.direction);
-         options.$element.animate(movOptions, 'slow', function() {
+         options.$element.animate(movOptions, '500', 'linear', function() {
             options.elemMovState.moving = false;
             if (options.callback) {
                options.callback();

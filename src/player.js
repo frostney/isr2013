@@ -39,7 +39,7 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
 
    });
    
-   $('body').keyup(function(e) {
+   $('body').keydown(function(e) {
       var charPos = $activeCharacter.offset();
       // W || Arrow up
       var up = ~~((e.keyCode === 87) || (e.keyCode === 38));

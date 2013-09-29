@@ -21,7 +21,7 @@
       } else if (playerMovState.y <= 5 && playerMovState.level === 2) {
          showScene('family');
       } else if (playerMovState.y <= 4 && playerMovState.level === 3) {
-         alert('You´ve got your pennance');
+         showScene('outro');
       }
    });
   var Config = scene.modules.ISR.Config;

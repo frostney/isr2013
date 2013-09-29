@@ -197,8 +197,7 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
    var decreaseLives = function() {
       lives--;
       if (lives === 0) {
-         alert('Game over');
-         location.reload();
+         Game.director.show('gameover');
       }
    };
    

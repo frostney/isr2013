@@ -24,49 +24,41 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
    
    Game.director.on('scene:change', function(sceneName) {
       // save current player pos to scenePlayer
-      if ($activeScene) {
+      if ($activeScene && $activeScene.length > 0 && scenePlayer[$activeScene[0].id]) {
          scenePlayer[$activeScene[0].id].x = playerMovState.x;
          scenePlayer[$activeScene[0].id].y = playerMovState.y;
       }
       console.log('switched scene to ' +sceneName);
       $activeScene = $('#' + sceneName);
       $activeCharacter = $activeScene.find('.character');
-      // get last player pos of player of this scene
-      playerMovState.x = scenePlayer[sceneName].x;
-      playerMovState.y = scenePlayer[sceneName].y;
-      $activeCharacter.css('left', playerMovState.x * Config.tile.width);
-      $activeCharacter.css('top', playerMovState.y * Config.tile.height);
+      if ($activeCharacter.length > 0) {
+         // get last player pos of player of this scene
+         playerMovState.x = scenePlayer[sceneName].x;
+         playerMovState.y = scenePlayer[sceneName].y;
+         $activeCharacter.css('left', playerMovState.x * Config.tile.width);
+         $activeCharacter.css('top', playerMovState.y * Config.tile.height);
+      }
 
    });
    
    $('body').keydown(function(e) {
       var charPos = $activeCharacter.offset();
-      // W || Arrow up
-      var up = ~~((e.keyCode === 87) || (e.keyCode === 38));
-      // S || Arrow down
-      var down = ~~((e.keyCode === 83) || (e.keyCode === 40));
-      // A || Arrow left
-      var left = ~~((e.keyCode === 65) || (e.keyCode === 37));
-      // D || Arrow right
-      var right = ~~((e.keyCode === 68) || (e.keyCode === 39));
-      // F for interaction
-      var action = ~~(e.keyCode === 70);
       var direction;
-
-      if (up) {
+      // W || Arrow up
+      if (~~((e.keyCode === 87) || (e.keyCode === 38))) {
          direction = 'up';
-      } else if (down) {
+      } // S || Arrow down
+      else if (~~((e.keyCode === 83) || (e.keyCode === 40))) {
          direction = 'down';
-      } else if (left) {
+      } // A || Arrow left
+      else if (~~((e.keyCode === 65) || (e.keyCode === 37))) {
          direction = 'left';
-      } else if (right) {
+      } // D || Arrow right
+      else if (~~((e.keyCode === 68) || (e.keyCode === 39))) {
          direction = 'right';
+      } else {
+         return false;
       }
-
-      /*var newPos = {
-         left : charPos.left,
-         top : charPos.top
-      };*/
       
       // move player
       if (!playerMovState.moving && direction) {
@@ -85,6 +77,16 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
            }
         });
       }
+      e.stopPropagation();
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return false;
+   });
+   
+   $('body').keyup(function(e) {
+      // F for interaction
+      var action = ~~(e.keyCode === 70);
+
       
       if (action) {
          doAction();
@@ -126,40 +128,41 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       var foundSth = false;
       $activeScene.find('#x' + targetTile.x + '-y' + targetTile.y + '.talkable').each(function(index) {
          foundSth = true;
+         var $tile = $(this);
          $dialogWindow.css('left', function(index, value) {
-            var left = parseInt(value) + Config.tile.width;
+            var left = parseInt($tile.css('left'), 10) + Config.tile.width;
             // 266 is dialog width
             if ((left + 266) > Config.viewport.width) {
                left = Config.viewport.width - (left + 266);
             }
             return left;
-         }).css('top', $(this).css('top'));
+         }).css('top', $tile.css('top'));
          $dialogWho = $dialogWindow.find('.who');
          $dialogWhat = $dialogWindow.find('.what');
          console.log('Your are talking to someone');
          //TODO open dialog or sth similar
-         if ($(this).hasClass('knight old')) {
+         if ($tile.hasClass('knight old')) {
             $dialogWho.text(Config.dialog.masterTemplar.who);
             $dialogWhat.text(Config.dialog.masterTemplar.what);
             playerMovState.level = 1;
-         } else if ($(this).hasClass('socket tablecloth')) {
+         } else if ($tile.hasClass('socket tablecloth')) {
             $dialogWho.text(Config.dialog.socket.who);
             $dialogWhat.text(Config.dialog.socket.what);
-            $(this).removeClass('tablecloth');
+            $tile.removeClass('tablecloth');
             playerMovState.level = 2;
             // show scene arrows
-            $(this).parents('#tile-container:first').find('.tile.arrow.left').addClass('items');
-         } else if ($(this).hasClass('wife')) {
+            $tile.parents('#tile-container:first').find('.tile.arrow.left').addClass('items');
+         } else if ($tile.hasClass('wife')) {
             $dialogWho.text(Config.dialog.wife2.who);
             $dialogWhat.text(Config.dialog.wife2.what);
-            $(this).parents('#tile-container:first').find('.tile.arrow.up').addClass('items');
+            $tile.parents('#tile-container:first').find('.tile.arrow.up').addClass('items');
             playerMovState.level = 3;
             // show scene arrows
-            $(this).parents('#tile-container:first').find('.tile.arrow.up').addClass('items');
-         } else if ($(this).hasClass('sign')) {
+            $tile.parents('#tile-container:first').find('.tile.arrow.up').addClass('items');
+         } else if ($tile.hasClass('sign')) {
             $dialogWho.text(Config.dialog.sign.who);
             $dialogWhat.text(Config.dialog.sign.what);
-         } else if ($(this).hasClass('knight')) {
+         } else if ($tile.hasClass('knight')) {
             $dialogWho.text(Config.dialog.knight.who);
             $dialogWhat.text(Config.dialog.knight.what);
          }

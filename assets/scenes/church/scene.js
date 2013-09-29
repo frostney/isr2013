@@ -16,11 +16,11 @@
       //console.log('church checking if we need to change the scene, current '+scene.parent.currentScene.name);
       if (playerMovState.y === 7 && playerMovState.level === 0) {
          showScene('temple-1');
-      } else if (playerMovState.y === 6 && playerMovState.level === 1) {
+      } else if (playerMovState.y <= 6 && playerMovState.level === 1) {
          showScene('war-1');
-      } else if (playerMovState.y === 5 && playerMovState.level === 2) {
+      } else if (playerMovState.y <= 5 && playerMovState.level === 2) {
          showScene('family');
-      } else if (playerMovState.y === 4 && playerMovState.level === 3) {
+      } else if (playerMovState.y <= 4 && playerMovState.level === 3) {
          alert('You´ve got your pennance');
       }
    });

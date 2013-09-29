@@ -121,7 +121,7 @@ define('isr/entity', ['jquery', 'isr', 'isr/config', 'lyria/loop'], function($, 
       }
    };
    
-   var doActionAnim = function($elem, direction) {
+   var doActionAnim = function($elem, direction, callback) {
       var actionDirection;
       switch(direction) {
          case 'up':
@@ -147,6 +147,9 @@ define('isr/entity', ['jquery', 'isr', 'isr/config', 'lyria/loop'], function($, 
                 return parseInt(value) - 20;
              }
           });
+          if (callback) {
+             callback();
+          }
       });
    };
    return {

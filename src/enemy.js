@@ -49,10 +49,14 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
                // rotate into proper direction
                $enemy.removeClass('left right up down').addClass(direction.attack);
                // do attack animation
-               Entity.doActionAnim($enemy, direction.attack);
-               console.log('attacking player');
+               Entity.doActionAnim($enemy, direction.attack, function() {
+                  if (!$enemy.hasClass('dead')) {
+                     console.log('attacking player');
+                     Player.decreaseLives();
+                  }
+               });
                direction = undefined;
-               Player.decreaseLives();
+               
             }
          } else {
             if (LyriaMath.random(0, 100) > 50) {

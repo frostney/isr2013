@@ -1,7 +1,5 @@
-isr2013
-=======
-
-Indie Speedrun Game 2013
+In Sanctum Repentum
+===================
 
 Repent your sins, templar!  
 

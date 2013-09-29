@@ -133,7 +133,7 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
             var left = parseInt($tile.css('left'), 10) + Config.tile.width;
             // 266 is dialog width
             if ((left + 266) > Config.viewport.width) {
-               left = Config.viewport.width - 266;
+               left = Config.viewport.width - (266 + Config.tile.width * 1.5);
             }
             return left;
          }).css('top', $tile.css('top'));

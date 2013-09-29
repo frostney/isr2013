@@ -11,6 +11,15 @@ Press W, S, A or D to move around.
 Press F to interact or fight.  
 
 
+Getting it to work on your machine:  
+* Install node.js
+* Install grunt with `npm install -g grunt-cli`
+* Install bower with `npm install -g bower`
+* Navigate to this directory
+* Run `bower install`
+* Run `grunt`
+
+
 Credits:  
 Johannes Stein  
 Dawid Pach  

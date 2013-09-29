@@ -26,24 +26,23 @@
       var kind ='';
       var style = 'top: ' + (tileWidth * y) + 'px; left: '+ (tileHeight * x) + 'px;';
       
-      if (['2-5'].indexOf(x+'-'+y) !== -1) {
-         // var tempIndex = y*x%2;
-         // kind = kindArr[tempIndex];
+      if (y < 4 || (y===4 && x !== 8)) { 
+         kind = 'obstacle';
+      } else if (['10-8','11-8'].indexOf(x+'-'+y) !== -1) {
          kind = 'obstacle items bed';
-         
-      } else if (['6-5'].indexOf(x+'-'+y) !== -1) {
+      } else if (['2-6', '2-8', '3-7'].indexOf(x+'-'+y) !== -1) {
          kind = 'obstacle items chair';
-         
-      } else if (['5-6'].indexOf(x+'-'+y) !== -1) {
+      } else if (['2-7'].indexOf(x+'-'+y) !== -1) {
          kind = 'obstacle items table';
+      } else if (['0-6'].indexOf(x+'-'+y) !== -1) {
+         kind = 'obstacle items dummy';
       } else if (['6-6'].indexOf(x+'-'+y) !== -1) {
          kind = 'npc wife talkable';
-      } else if (['5-5'].indexOf(x+'-'+y) !== -1) {
-         kind = 'npc child';
-      } else if (['4-6'].indexOf(x+'-'+y) !== -1) {
+      } else if (['10-7'].indexOf(x+'-'+y) !== -1) {
          kind = 'npc brother';
+      } else if (['0-5'].indexOf(x+'-'+y) !== -1) {
+         kind = 'npc child';
       } else if (['8-4'].indexOf(x+'-'+y) !== -1) {
-         // items will be set later
          kind = 'arrow up';
       }
             

@@ -18,7 +18,6 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       'moving' : false,
       'level' : 0
    };
-   var $dialogWindow = $('#dialog');
    var lives = 3;
    var startTime = 0;
    
@@ -71,7 +70,9 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       
       // move player
       if (!playerMovState.moving && direction) {
-        $dialogWindow.fadeOut(500);
+        if ($('#dialog').length > 0) {
+          $('#dialog').fadeOut(500);
+        }
         Entity.move({
            'elemMovState' : playerMovState,
            '$scene' : $activeScene,
@@ -98,6 +99,8 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
     * Function to do stuff like fight or talk
     */
    var doAction = function() {
+     var $dialogWindow = $('#dialog');
+     
       // first check direction
       var targetTile = {
          x : playerMovState.x,

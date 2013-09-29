@@ -1,6 +1,9 @@
 In Sanctum Repentum
 ===================
 
+Github: https://github.com/Stoney-FD/isr2013/ 
+MIT License
+
 Repent your sins, templar!  
 
 
@@ -24,6 +27,7 @@ Credits:
 Johannes Stein  
 Dawid Pach  
 Claudiu Coman  
+(Indie Speedrun Team: Kostenstelle 1511)
 
 
 This game was developed as part of Indie Speed Run 2013 (www.indiespeedrun.com)

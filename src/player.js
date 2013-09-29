@@ -3,7 +3,7 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
    var $activeCharacter;
    var scenePlayer = {
       'church' : {'x': 5, 'y' : 8},
-      'family' : {'x': 5, 'y' : 8},
+      'family' : {'x': 8, 'y' : 4},
       'temple-1' : {'x': 5, 'y' : 8},
       'temple-2' : {'x': 5, 'y' : 8},
       'war-1' : {'x': 0, 'y' : 3},
@@ -120,6 +120,8 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
             targetTile.x += 1;
          break;
       }
+      Entity.doActionAnim($activeScene.find('.character'), playerMovState.facing);
+      
       // check if on there is sth on the tile the player is facing to interact with
       var foundSth = false;
       $activeScene.find('#x' + targetTile.x + '-y' + targetTile.y + '.talkable').each(function(index) {
@@ -139,13 +141,14 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
             $(this).removeClass('tablecloth');
             playerMovState.level = 2;
             // show scene arrows
-            $(this).parents('tile-container:first').find('.tile.arrow.left').addClass('items');
+            $(this).parents('#tile-container:first').find('.tile.arrow.left').addClass('items');
          } else if ($(this).hasClass('wife')) {
             $dialogWho.text(Config.dialog.wife2.who);
             $dialogWhat.text(Config.dialog.wife2.what);
+            $(this).parents('#tile-container:first').find('.tile.arrow.up').addClass('items');
             playerMovState.level = 3;
             // show scene arrows
-            $(this).parents('tile-container:first').find('.tile.arrow.up').addClass('items');
+            $(this).parents('#tile-container:first').find('.tile.arrow.up').addClass('items');
          } else if ($(this).hasClass('sign')) {
             $dialogWho.text(Config.dialog.sign.who);
             $dialogWhat.text(Config.dialog.sign.what);

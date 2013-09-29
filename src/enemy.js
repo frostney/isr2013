@@ -45,7 +45,11 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
             console.log('Moving to player');
             // direction = 'up';
             // TODO attack player
-            if (direction === 'attack') {
+            if (direction.attack) {
+               // rotate into proper direction
+               $enemy.removeClass('left right up down').addClass(direction.attack);
+               // do attack animation
+               Entity.doActionAnim($enemy, direction.attack);
                console.log('attacking player');
                direction = undefined;
                Player.decreaseLives();
@@ -95,6 +99,11 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
       var diff_y = Math.abs(Player.playerMovState.y - pos.y);
       // check if KI is right beside player (only horizontal/vertical not diagonal)
       if ((diff_x === 1 || diff_x === 0) && (diff_y === 1 || diff_y === 0) && !(diff_y === 1 && diff_x === 1)) {
+         if (diff_x !== 0) {
+            return {attack : (Player.playerMovState.x - pos.x) > 0 ? 'right' : 'left'};
+         } else {
+            return {attack : (Player.playerMovState.y - pos.y) > 0 ? 'down' : 'up'};
+         }
          return 'attack';
       } else if (diff_x < range && diff_y < range) {
          // evaluate in which direction the KI has to move to get to the player

@@ -90,6 +90,7 @@ define('isr/entity', ['jquery', 'isr', 'isr/config', 'lyria/loop'], function($, 
          options.elemMovState.moving = true;
          $.extend(true, options.elemMovState, targetTiles);
          options.$element.removeClass('left right up down').addClass(options.direction);
+         options.elemMovState.facing = options.direction;
          var animationRunning = true;
          options.$element.animate(movOptions, '500', 'linear', function() {
             animationRunning = false;
@@ -119,7 +120,37 @@ define('isr/entity', ['jquery', 'isr', 'isr/config', 'lyria/loop'], function($, 
          return false;
       }
    };
+   
+   var doActionAnim = function($elem, direction) {
+      var actionDirection;
+      switch(direction) {
+         case 'up':
+            actionDirection = {top : '-=20'};
+         break;
+         case 'down':
+            actionDirection = {top : '+=20'};
+         break;
+         case 'left':
+            actionDirection = {left : '-=20'};
+         break;
+         case 'right':
+            actionDirection = {left : '+=20'};
+         break;
+      }
+      
+      $elem.animate(actionDirection, 'fast', function() {
+          $(this).css(Object.keys(actionDirection)[0], function(index, value) {
+             // move back
+             if (actionDirection[Object.keys(actionDirection)[0]].indexOf('-') === 0) {
+                return parseInt(value) + 20;
+             } else {
+                return parseInt(value) - 20;
+             }
+          });
+      });
+   };
    return {
-      'move' : move
+      'move' : move,
+      'doActionAnim' : doActionAnim
    };
 }); 

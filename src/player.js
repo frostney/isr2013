@@ -164,8 +164,11 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
          var tileY = $(this).attr('data-y');
          $(this).remove();
          // remove enemy
-         $(this).fadeOut('slow').fadeIn('slow', function() {
-            $activeScene.find('#x' + tileX + '-y' + tileY).addClass('items dead');
+         $(this).fadeOut('slow');
+         var $tile = $activeScene.find('#x' + tileX + '-y' + tileY);
+         $tile.hide();
+         $tile.fadeIn('slow', function() {
+            $(this).addClass('items dead');
          });
       });
       if (!foundSth) {

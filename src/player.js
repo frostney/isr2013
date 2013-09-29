@@ -198,7 +198,9 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       lives--;
       if (lives === 0) {
          Game.director.show('gameover');
+         return false;
       }
+      return true;
    };
    
    return {

@@ -1,4 +1,4 @@
-define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'], function($, Game, Player, Entity, LyriaMath) {
+define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math', 'isr'], function($, Game, Player, Entity, LyriaMath, Game) {
    var enemyTiles = {
       'war-1' : [],
       'war-2' : []
@@ -48,6 +48,7 @@ define('isr/enemy', ['jquery', 'isr', 'isr/player', 'isr/entity', 'lyria/math'],
             if (direction.attack) {
                // rotate into proper direction
                $enemy.removeClass('left right up down').addClass(direction.attack);
+               Game.audio.play('sucuk');
                // do attack animation
                Entity.doActionAnim($enemy, direction.attack, function() {
                   if (!$enemy.hasClass('dead')) {

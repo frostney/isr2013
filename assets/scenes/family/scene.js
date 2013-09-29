@@ -30,9 +30,9 @@
          kind = 'obstacle';
       } else if (['10-8','11-8'].indexOf(x+'-'+y) !== -1) {
          kind = 'obstacle items bed';
-      } else if (['2-6', '2-8', '3-7'].indexOf(x+'-'+y) !== -1) {
+      } else if (['3-5', '11-6', '4-6'].indexOf(x+'-'+y) !== -1) {
          kind = 'obstacle items chair';
-      } else if (['2-7'].indexOf(x+'-'+y) !== -1) {
+      } else if (['3-6'].indexOf(x+'-'+y) !== -1) {
          kind = 'obstacle items table';
       } else if (['0-6'].indexOf(x+'-'+y) !== -1) {
          kind = 'obstacle items dummy';

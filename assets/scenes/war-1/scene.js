@@ -36,7 +36,7 @@
             kind = 'obstacle items ruin1';
 
          } else if (['0-1', '0-2'].indexOf(x + '-' + y) !== -1) {
-            kind = 'knight right spear';
+            kind = 'npc knight right spear';
          } else if (['9-2', '9-6'].indexOf(x + '-' + y) !== -1) {
             kind = 'obstacle items ruin2';
          } else if (['4-1', '4-5', '8-1', '8-5'].indexOf(x + '-' + y) !== -1) {

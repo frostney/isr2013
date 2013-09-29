@@ -5,7 +5,7 @@
       if (sceneName !== scene.name) {
          return;
       }
-      console.log('temple-1 checking if we need to change the scene, current '+scene.parent.currentScene.name);
+      //console.log('temple-1 checking if we need to change the scene, current '+scene.parent.currentScene.name);
       if (playerMovState.y <= 0) {
          scene.parent.show('temple-2');
       }

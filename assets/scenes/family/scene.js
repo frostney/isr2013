@@ -4,7 +4,7 @@
       if (sceneName !== scene.name) {
          return;
       }
-      console.log('temple-2 checking if we need to change the scene, current '+scene.parent.currentScene.name);
+      //console.log('temple-2 checking if we need to change the scene, current '+scene.parent.currentScene.name);
       if (playerMovState.level === 3) {
          scene.parent.show('church');
       }

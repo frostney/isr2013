@@ -3,7 +3,7 @@
       if (sceneName !== scene.name) {
          return;
       }
-      console.log('war-2 checking if we need to change the scene, current '+scene.parent.currentScene.name);
+      //console.log('war-2 checking if we need to change the scene, current '+scene.parent.currentScene.name);
       if (playerMovState.x === 0 && playerMovState.level === 2) {
          // check if player has found the holy table cloth
          scene.parent.show('war-1');

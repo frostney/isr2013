@@ -4,7 +4,7 @@
       if (sceneName !== scene.name) {
          return;
       }
-      console.log('war-1 checking if we need to change the scene, current ' + scene.parent.currentScene.name);
+      //console.log('war-1 checking if we need to change the scene, current ' + scene.parent.currentScene.name);
       if (playerMovState.x === 11 && playerMovState.level === 1) {
          scene.parent.show('war-2');
       } else if (playerMovState.x === 0 && playerMovState.level === 2) {

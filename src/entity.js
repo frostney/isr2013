@@ -90,7 +90,9 @@ define('isr/entity', ['jquery', 'isr', 'isr/config', 'lyria/loop'], function($, 
          options.elemMovState.moving = true;
          $.extend(true, options.elemMovState, targetTiles);
          options.$element.removeClass('left right up down').addClass(options.direction);
+         var animationRunning = true;
          options.$element.animate(movOptions, '500', 'linear', function() {
+            animationRunning = false;
             options.elemMovState.moving = false;
             if (options.callback) {
                options.callback();
@@ -98,10 +100,14 @@ define('isr/entity', ['jquery', 'isr', 'isr/config', 'lyria/loop'], function($, 
          });
          var spriteCounter = 0;
          Loop.on('walkAnimation', function(delta) {
-            if (spriteCounter === 17) {
+            if (!animationRunning) {
                options.$element.removeClass('walk' + (spriteCounter));
                Loop.off('walkAnimation');
             } else {
+               if (spriteCounter === 17) {
+                  options.$element.removeClass('walk' + (spriteCounter));
+                  spriteCounter = 0;
+               }
                options.$element.removeClass('walk' + (spriteCounter++)).addClass('walk' + spriteCounter);
             }
 

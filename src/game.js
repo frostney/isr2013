@@ -8,6 +8,7 @@ define('isr', ['lyria/game', 'isr/scenelist', 'isr/assetlist', 'lyria/audio', 'j
 
    // If preloader is complete, everything in this function happens
    myGame.preloader.on('complete', function() {
+     $(window).trigger('resize');
      $('#loading').remove();
      
       myGame.audio = new Audio();

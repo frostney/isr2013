@@ -1,4 +1,8 @@
 define('isr/config', {
+   'viewport': {
+      'width': 960,
+      'height': 720
+   },
    'tile' : {
       'width' : 80,
       'height' : 80

@@ -126,7 +126,14 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
       var foundSth = false;
       $activeScene.find('#x' + targetTile.x + '-y' + targetTile.y + '.talkable').each(function(index) {
          foundSth = true;
-         $dialogWindow.css('left', parseInt($(this).css('left')) + Config.tile.width).css('top', $(this).css('top'));
+         $dialogWindow.css('left', function(index, value) {
+            var left = parseInt(value) + Config.tile.width;
+            // 266 is dialog width
+            if ((left + 266) > Config.viewport.width) {
+               left = Config.viewport.width - (left + 266);
+            }
+            return left;
+         }).css('top', $(this).css('top'));
          $dialogWho = $dialogWindow.find('.who');
          $dialogWhat = $dialogWindow.find('.what');
          console.log('Your are talking to someone');

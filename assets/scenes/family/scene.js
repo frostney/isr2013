@@ -4,8 +4,8 @@
       if (sceneName !== scene.name) {
          return;
       }
-      //console.log('temple-2 checking if we need to change the scene, current '+scene.parent.currentScene.name);
-      if (playerMovState.level === 3) {
+      //console.log('family checking if we need to change the scene, current '+scene.parent.currentScene.name);
+      if (playerMovState.x === 8 && playerMovState.y === 4 && playerMovState.level === 3) {
          scene.parent.show('church');
       }
    });
@@ -37,26 +37,14 @@
       } else if (['5-6'].indexOf(x+'-'+y) !== -1) {
          kind = 'obstacle items table';
       } else if (['6-6'].indexOf(x+'-'+y) !== -1) {
-         family.push({
-           'data-x': x,
-           'data-y': y,
-           style: style,
-           member: 'wife'
-         });
+         kind = 'npc wife talkable';
       } else if (['5-5'].indexOf(x+'-'+y) !== -1) {
-         family.push({
-           'data-x': x,
-           'data-y': y,
-           style: style,
-           member: 'child'
-         });
+         kind = 'npc child';
       } else if (['4-6'].indexOf(x+'-'+y) !== -1) {
-         family.push({
-           'data-x': x,
-           'data-y': y,
-           style: style,
-           member: 'brother'
-         });
+         kind = 'npc brother';
+      } else if (['8-4'].indexOf(x+'-'+y) !== -1) {
+         // items will be set later
+         kind = 'arrow up';
       }
             
       tile.push({
@@ -72,8 +60,7 @@
     title: scene.t('title', {
       'name': scene.name
       }),
-    tile: tile,
-    family: family
+    tile: tile
   });
   
 })(this);

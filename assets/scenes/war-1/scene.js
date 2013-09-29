@@ -32,9 +32,10 @@
          var kind = '';
          var style = 'top: ' + (tileWidth * y) + 'px; left: ' + (tileHeight * x) + 'px;';
 
-         if (['3-2', '3-6'].indexOf(x + '-' + y) !== -1) {
+         if (y===0 || y=== 8) {
+            kind = 'obstacle items wall';
+         } else if (['3-2', '3-6'].indexOf(x + '-' + y) !== -1) {
             kind = 'obstacle items ruin1';
-
          } else if (['0-1', '0-2'].indexOf(x + '-' + y) !== -1) {
             kind = 'npc knight right spear';
          } else if (['9-2', '9-6'].indexOf(x + '-' + y) !== -1) {

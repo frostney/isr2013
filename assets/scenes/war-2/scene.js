@@ -29,7 +29,9 @@
       var kind ='';
       var style = 'top: ' + (tileWidth * y) + 'px; left: '+ (tileHeight * x) + 'px;';
       
-      if (['3-1', '3-7', '5-4'].indexOf(x+'-'+y) !== -1) {
+      if (y === 0 || y === 8) {
+            kind = 'obstacle items wall';
+      } else if (['3-1', '3-7', '5-4'].indexOf(x+'-'+y) !== -1) {
          // var tempIndex = y*x%2;
          // kind = kindArr[tempIndex];
          kind = 'obstacle items ruin1';

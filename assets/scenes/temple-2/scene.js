@@ -31,12 +31,12 @@
             kind = 'npc knight old talkable';
          }// set idle templars
          else if (['3-5', '4-4', '5-4'].indexOf(x + '-' + y) !== -1) {
-            kind = 'npc knight right';
+            kind = 'npc knight right talkable';
             if (x === 3) {
                kind += ' spear';
             }
          } else if (['6-4', '7-4', '8-5'].indexOf(x + '-' + y) !== -1) {
-            kind = 'npc knight left';
+            kind = 'npc knight left talkable';
             if (x === 8) {
                kind += ' spear';
             }

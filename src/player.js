@@ -24,7 +24,7 @@ define('isr/player', ['jquery', 'isr', 'isr/config', 'isr/entity'], function($, 
    
    Game.director.on('scene:change', function(sceneName) {
       // save current player pos to scenePlayer
-      if ($activeScene) {
+      if ($activeScene && $activeScene.length > 0 && scenePlayer[$activeScene[0].id]) {
          scenePlayer[$activeScene[0].id].x = playerMovState.x;
          scenePlayer[$activeScene[0].id].y = playerMovState.y;
       }
